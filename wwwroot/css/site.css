@@ -1,0 +1,100 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin: 20px 0;
+  background-color: hsl(229, 24%, 87%);
+  font-family: Ubuntu;
+}
+/* Apply 14px font size to placeholders for all input fields */
+::-webkit-input-placeholder { /* Chrome, Safari, Edge */
+  font-size: 14px;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  font-size: 14px;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+  font-size: 14px;
+}
+::placeholder { /* Standard syntax */
+  font-size: 14px;
+}
+.container { 
+  width: 65%;
+  height: 100%;
+  background-color: hsl(0, 0%, 100%);
+  padding: 0.8rem;
+  border-radius: 0.8rem;
+}
+aside, section { 
+  height: auto; /* todo - change height to fit-content  */
+  border-radius: 0.8rem;
+}
+aside {
+  color: hsl(0, 0%, 100%);
+  padding: 4rem;
+  background: url('../images/bg-sidebar-desktop.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+aside .step-container {
+  display: flex;
+  margin-bottom: 1rem;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 700;
+  line-height: 0.2rem;
+}
+aside .step-container span {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  margin-right: 1rem;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #fff;
+  border-radius: 50%;
+}
+aside .step-container .step-info .step {
+  color: hsl(229, 24%, 87%);
+  line-height: 8px;
+  font-size: 10px;
+  font-weight: lighter;
+}
+aside .step-container .step-info .step-descreption {
+  font-size: 12px;
+  font-weight: 700;
+}
+.main-info {
+  padding: 3rem 5rem;
+}
+.main-info h3 { color: hsl(213, 96%, 18%); }
+.main-info label { font-size: 14px; color: hsl(213, 96%, 18%); }
+.main-info p { color: hsl(231, 11%, 63%); font-size: 14px; }
+.btn-container { text-align: right; } 
+.btn-custom {
+  background-color: hsl(213, 96%, 18%);
+  color: #fff;
+  font-size: 14px;
+}
+.btn-custom:hover{
+  color: #fff;
+  opacity: 0.8;
+}

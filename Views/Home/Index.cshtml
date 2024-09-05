@@ -1,0 +1,67 @@
+﻿@model MultiStepForm.Models.FormViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+@using(Html.BeginForm("Index", "Home", FormMethod.Post)){
+    <div class="row content" style="margin-right: 0; margin-left: 0;">
+        <aside class="col-sm-4 sidebar">
+            <div class="row" style="margin-right: 0; margin-left: 0;">
+                <div class="col-sm-12 step-container">
+                    <span class="step-number">1</span>
+                    <div class="step-info">
+                        <h6 class="step">Step 1</h6>
+                        <h6 class="step-descreption">Your Info</h6>
+                    </div>
+                </div>
+                <div class="col-sm-12 step-container">
+                    <span class="step-number">2</span>
+                    <div class="step-info">
+                        <h6 class="step">Step 2</h6>
+                        <h6 class="step-descreption">Select Plan</h6>
+                    </div>
+                </div>
+                <div class="col-sm-12 step-container">
+                    <span class="step-number">3</span>
+                    <div class="step-info">
+                        <h6 class="step">Step 3</h6>
+                        <h6 class="step-descreption">Add-Ons</h6>
+                    </div>
+                </div>
+                <div class="col-sm-12 step-container">
+                    <span class="step-number">4</span>
+                    <div class="step-info">
+                        <h6 class="step">Step 4</h6>
+                        <h6 class="step-descreption">Your Summary</h6>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        <section class="col-sm-8 main-info">
+            <h3>Personal Info</h3>
+            <p class="pb-2">Please provide your name, email address, and phone number.</p>
+            <div class="form-group pb-2">
+                @Html.LabelFor(m => m.PersonalInfo.Name)
+                @Html.TextBoxFor(m => m.PersonalInfo.Name, new { @class = "form-control", placeholder = "e.g. Stephen King" })
+                @Html.ValidationMessageFor(m => m.PersonalInfo.Name, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group pb-2">
+                @Html.LabelFor(m => m.PersonalInfo.Email)
+                @Html.TextBoxFor(m => m.PersonalInfo.Email, new { @class = "form-control", placeholder = "e.g. stephenking@lorem.com" })
+                @Html.ValidationMessageFor(m => m.PersonalInfo.Email, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group pb-2">
+                @Html.LabelFor(m => m.PersonalInfo.PhoneNumber)
+                @Html.TextBoxFor(m => m.PersonalInfo.PhoneNumber, new { @class = "form-control", placeholder = "e.g. +1 234 567 890" })
+                @Html.ValidationMessageFor(m => m.PersonalInfo.PhoneNumber, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="btn-container">
+                <button type="submit" class="btn btn-custom mt-5">Next Step</button>
+            </div>
+        </section>
+
+        @* <section class="personal-info">
+            <h3>Personal Info</h3>
+        </section> *@
+    </div>
+}
