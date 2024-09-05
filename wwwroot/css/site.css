@@ -94,6 +94,13 @@ aside .step-container .step-info .step-descreption {
   color: #fff;
   font-size: 14px;
 }
+.error-align { 
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0.7rem 0 0.4rem 0;
+}
 .btn-custom:hover{
   color: #fff;
   opacity: 0.8;

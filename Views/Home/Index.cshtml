@@ -40,19 +40,25 @@
             <h3>Personal Info</h3>
             <p class="pb-2">Please provide your name, email address, and phone number.</p>
             <div class="form-group pb-2">
-                @Html.LabelFor(m => m.PersonalInfo.Name)
+                <div class="error-align">
+                    @Html.LabelFor(m => m.PersonalInfo.Name)
+                    @Html.ValidationMessageFor(m => m.PersonalInfo.Name, "", new { @class = "text-danger" })
+                </div>
                 @Html.TextBoxFor(m => m.PersonalInfo.Name, new { @class = "form-control", placeholder = "e.g. Stephen King" })
-                @Html.ValidationMessageFor(m => m.PersonalInfo.Name, "", new { @class = "text-danger" })
             </div>
             <div class="form-group pb-2">
-                @Html.LabelFor(m => m.PersonalInfo.Email)
+                <div class="error-align">
+                    @Html.LabelFor(m => m.PersonalInfo.Email)
+                    @Html.ValidationMessageFor(m => m.PersonalInfo.Email, "", new { @class = "text-danger" })
+                </div>
                 @Html.TextBoxFor(m => m.PersonalInfo.Email, new { @class = "form-control", placeholder = "e.g. stephenking@lorem.com" })
-                @Html.ValidationMessageFor(m => m.PersonalInfo.Email, "", new { @class = "text-danger" })
             </div>
             <div class="form-group pb-2">
-                @Html.LabelFor(m => m.PersonalInfo.PhoneNumber)
+                <div class="error-align">
+                    @Html.LabelFor(m => m.PersonalInfo.PhoneNumber)
+                    @Html.ValidationMessageFor(m => m.PersonalInfo.PhoneNumber, "", new { @class = "text-danger" })
+                </div>
                 @Html.TextBoxFor(m => m.PersonalInfo.PhoneNumber, new { @class = "form-control", placeholder = "e.g. +1 234 567 890" })
-                @Html.ValidationMessageFor(m => m.PersonalInfo.PhoneNumber, "", new { @class = "text-danger" })
             </div>
 
             <div class="btn-container">

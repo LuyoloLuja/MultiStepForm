@@ -28,3 +28,4 @@
 /home/luyolo/Documents/Projects/multi-step-form-main/MultiStepForm/obj/Debug/net8.0/MultiStepForm.pdb
 /home/luyolo/Documents/Projects/multi-step-form-main/MultiStepForm/obj/Debug/net8.0/MultiStepForm.genruntimeconfig.cache
 /home/luyolo/Documents/Projects/multi-step-form-main/MultiStepForm/obj/Debug/net8.0/ref/MultiStepForm.dll
+/home/luyolo/Documents/Projects/multi-step-form-main/MultiStepForm/obj/Debug/net8.0/MultiStepForm.sourcelink.json
