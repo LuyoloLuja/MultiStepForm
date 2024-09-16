@@ -122,8 +122,8 @@ aside .step-container .step-info .step-descreption {
 .billing-type {
   display: inline-block;
   width: 100%;
-  height: 10rem;
-  padding: 15px;
+  /* height: 8rem; */
+  padding: 10px;
   border: 1px solid hsl(229, 24%, 87%);
   border-radius: 5px;
   cursor: pointer;
@@ -137,4 +137,9 @@ aside .step-container .step-info .step-descreption {
 
 .billing-type div img {
   margin-bottom: 2rem;
+}
+.billing-type span { font-weight: bold; }
+.billing-type small {
+  display: block;
+  color: hsl(231, 11%, 63%);
 }
