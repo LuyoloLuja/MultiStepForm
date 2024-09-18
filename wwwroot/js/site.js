@@ -20,26 +20,23 @@
 $(document).ready(function(){
     // Initialize the form validation
     $("form").validate();
-    validateInputsAndDisplayNextTab(".personal-info", "#validate-personal-info", ".personal-info", ".step-number-1", ".select-plan", ".step-number-2")
-    // target the personal-info button
-    // $("#validate-personal-info").click(function(){
-    //     let isValid = $(".personal-info").find("input").valid();
+    validateInputsAndDisplayNextTab(".personal-info", "#validate-personal-info", ".personal-info", ".step-number-1", ".select-plan", ".step-number-2");
 
-    //     if(isValid) {
-    //         let personalInfoSection = document.querySelector(".personal-info");
-    //         let personalInfoStepNumber = document.querySelector(".step-number-1");
+    // Initially check if the checkbox is checked and update labels
+    updateLabels($('#billing-cycle').is(':checked'));
 
-    //         let selectPlanSection = document.querySelector(".select-plan");
-    //         let selectPlanStepNumber = document.querySelector(".step-number-2");
-
-    //         personalInfoSection.classList.add("hidden");
-    //         personalInfoStepNumber.classList.remove('step-number');
-
-    //         selectPlanSection.classList.remove('hidden');
-    //         selectPlanStepNumber.classList.add('step-number');
-
-    //     } else {
-    //         console.log('Form is invalid');
-    //     }
-    // });
+    // Listen for changes on the checkbox
+    $('#billing-cycle').change(function() {
+        updateLabels($(this).is(':checked'));
+    });
+    
+    function updateLabels(isYearly) {
+        if (isYearly) {
+            $('#yearly-label').addClass('active');
+            $('#monthly-label').removeClass('active');
+        } else {
+            $('#monthly-label').addClass('active');
+            $('#yearly-label').removeClass('active');
+        }
+    }
 });

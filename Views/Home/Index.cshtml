@@ -107,6 +107,13 @@
                             <small>$15/mo</small>
                         </label>
                     </div>
+                    <div class="billing-toggle">
+                        <span id="monthly-label" class="active">Monthly</span>
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.BillingCycle.IsYearly, new { @class = "checkbox-input", id = "billing-cycle" })
+                        </div>
+                        <span id="yearly-label">Yearly</span>
+                    </div>
                 </div>
             </section>
 

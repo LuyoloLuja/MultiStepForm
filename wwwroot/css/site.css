@@ -3,6 +3,7 @@ html {
 }
 .hidden { display: none; }
 .shown { display: block; }
+.active { color: hsl(213, 96%, 18%); }
 .step-number {
   background-color: hsl(206, 94%, 87%);
   color: hsl(213, 96%, 18%);
@@ -142,4 +143,43 @@ aside .step-container .step-info .step-descreption {
 .billing-type small {
   display: block;
   color: hsl(231, 11%, 63%);
+}
+.billing-toggle {
+  display: flex;
+  justify-content: space-around;
+  color: hsl(229, 24%, 87%);
+  font-size: small;
+  font-weight: bold;
+}
+/* .billing-toggle .checkbox {
+  border: 1px solid red;
+} */
+.billing-toggle input[type="checkbox"] {
+  position: relative;
+  appearance: none;
+  border: none;
+  height: 1rem;  /* Set height to 1rem */
+  width: 2rem;   /* Width is usually 2x the height for a toggle */
+  background-color: hsl(213, 96%, 18%);
+  outline: none;
+  border-radius: 10px; /* Half of the height to create a circular effect */
+  transition: .5s;
+  cursor: pointer;
+}
+
+.billing-toggle input[type="checkbox"]:before {
+  content: "";
+  position: absolute;
+  width: 0.8rem;  /* Slightly smaller than the height of the checkbox */
+  height: 0.8rem; /* Equal to the width for a circular shape */
+  border-radius: 50%;
+  top: 50%;       /* Align to the middle vertically */
+  left: 4px;      /* Provide left padding */
+  transform: translateY(-50%); /* Center vertically */
+  background-color: hsl(224, 65%, 95%);
+  transition: 0.5s;
+}
+
+.billing-toggle input:checked[type="checkbox"]:before {
+  left: calc(100% - 0.9rem); /* Adjust based on new size */
 }
