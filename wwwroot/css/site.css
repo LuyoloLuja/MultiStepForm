@@ -94,10 +94,19 @@ aside .step-container .step-info .step-descreption {
 .main-info h3 { color: hsl(213, 96%, 18%); }
 .main-info label { font-size: 14px; color: hsl(213, 96%, 18%); }
 .main-info p { color: hsl(231, 11%, 63%); font-size: 14px; }
-.btn-container { text-align: right; } 
+.btn-container { text-align: right; }
+.btn-container-center-space {
+  display: flex;
+  justify-content: space-between;
+}
 .btn-custom {
   background-color: hsl(213, 96%, 18%);
   color: #fff;
+  font-size: 14px;
+}
+.btn-custom-back {
+  background-color: hsl(229, 24%, 87%);
+  color: hsl(231, 11%, 63%);
   font-size: 14px;
 }
 .error-align { 
@@ -111,7 +120,6 @@ aside .step-container .step-info .step-descreption {
   color: #fff;
   opacity: 0.8;
 }
-
 /* billing radio buttons */
 .radio-input {
   display: none;
@@ -119,7 +127,6 @@ aside .step-container .step-info .step-descreption {
 .select-plan .row {
   display: flex;
 }
-
 .billing-type {
   display: inline-block;
   width: 100%;
@@ -147,13 +154,17 @@ aside .step-container .step-info .step-descreption {
 .billing-toggle {
   display: flex;
   justify-content: space-around;
+  align-items: center;
+  width: 50%;
+  padding: 2rem 0 3rem 0;
+  margin: 0 auto;
   color: hsl(231, 11%, 63%);
   font-size: small;
   font-weight: bold;
 }
-/* .billing-toggle .checkbox {
-  border: 1px solid red;
-} */
+.billing-toggle .checkbox {
+  display: inline;
+}
 .billing-toggle input[type="checkbox"] {
   position: relative;
   appearance: none;
