@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MultiStepForm")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5eb01ab3b550b651cff406adbcf26385fcada7bf")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+301a2464503465d0a7fdbb7be737023fc968f421")]
 [assembly: System.Reflection.AssemblyProductAttribute("MultiStepForm")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MultiStepForm")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

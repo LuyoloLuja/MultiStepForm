@@ -21,7 +21,7 @@
                     </div>
                 </div>
                 <div class="col-sm-12 step-container">
-                    <span class="step-number-2">3</span>
+                    <span class="step-number-3">3</span>
                     <div class="step-info">
                         <h6 class="step">Step 3</h6>
                         <h6 class="step-descreption">Add-Ons</h6>
@@ -72,7 +72,7 @@
                 <p class="pb-2">You have the option of monthly or yearly billing.</p>
                 <div class="row pb-3">
                     <div class="col-sm-4">
-                        @Html.RadioButtonFor(m => m.BillingType.Monthly, 9, new { @class = "radio-input", id = "arcade-radio" })
+                        @Html.RadioButtonFor(m => m.BillingType.BillType, 9, new { @class = "radio-input", id = "arcade-radio" })
 
                         <label for="arcade-radio" class="billing-type">
                             <div>
@@ -86,7 +86,7 @@
                         </label>
                     </div>
                     <div class="col-sm-4">
-                        @Html.RadioButtonFor(m => m.BillingType.Monthly, 12, new { @class = "radio-input", id = "advanced-radio" })
+                        @Html.RadioButtonFor(m => m.BillingType.BillType, 12, new { @class = "radio-input", id = "advanced-radio" })
 
                         <label for="advanced-radio" class="billing-type">
                             <div>
@@ -100,7 +100,7 @@
                         </label>
                     </div>
                     <div class="col-sm-4">
-                        @Html.RadioButtonFor(m => m.BillingType.Monthly, 15, new { @class = "radio-input", id = "pro-radio" })
+                        @Html.RadioButtonFor(m => m.BillingType.BillType, 15, new { @class = "radio-input", id = "pro-radio" })
 
                         <label for="pro-radio" class="billing-type">
                             <div>
@@ -130,6 +130,53 @@
 
             <section class="add-ons hidden">
                 <h3>Pick add-ons</h3>
+                <p class="pb-2">Add-ons help enhance your gaming experience.</p>
+
+                <div class="add-ons-content">
+                    <div class="checkbox-wrapper">
+                        <label for="online-service-checkbox" class="online-service-label">
+                            <div class="check">
+                                @Html.CheckBoxFor(m => m.AddOns.OnlineService, new { @id = "online-service-checkbox", @class = "custom-checkbox" })
+                            </div>
+                            <div>
+                                <small style="font-weight: bold;">Online service</small>
+                                <small style="color: hsl(231, 11%, 63%);">Access to multiplayer games</small>
+                            </div>
+                            <small class="add-ons-bill-cycle">+$1/mo</small>
+                        </label>
+                    </div>
+
+                    <div class="checkbox-wrapper">
+                        <label for="large-storage-checkbox">
+                            <div class="check">
+                                @Html.CheckBoxFor(m => m.AddOns.LargerStorage, new { @id = "large-storage-checkbox", @class = "custom-checkbox" })
+                            </div>
+                            <div>
+                                <small style="font-weight: bold;">Large storage</small>
+                                <small style="color: hsl(231, 11%, 63%);">Extra 1TB of cloud save</small>
+                            </div>
+                            <small class="add-ons-bill-cycle">+$2/mo</small>
+                        </label>
+                    </div>
+
+                    <div class="checkbox-wrapper">
+                        <label for="customizable-storage-checkbox">
+                            <div class="check">
+                                @Html.CheckBoxFor(m => m.AddOns.CustomizableStorage, new { @id = "customizable-storage-checkbox", @class = "custom-checkbox" })
+                            </div>
+                            <div>
+                                <small style="font-weight: bold;">Customizable Profile</small>
+                                <small style="color: hsl(231, 11%, 63%);">Custom theme on your profile</small>
+                            </div>
+                            <small class="add-ons-bill-cycle">+$2/mo</small>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="btn-container-center-space">
+                    <button type="button" class="btn btn-custom-back mt-5" id="btn-back-add-ons">Go Back</button>
+                    <button type="button" class="btn btn-custom mt-5" id="validate-add-ons">Next Step</button>
+                </div>
             </section>
 
             <section class="finishing-up hidden">
