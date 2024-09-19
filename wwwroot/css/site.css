@@ -142,14 +142,20 @@ aside .step-container .step-info .step-descreption {
   background-color: hsl(231, 100%, 99%);
   border-color: hsl(243, 100%, 62%);
 }
-
+.radio-input:hover + label:hover {
+  background-color: hsl(231, 100%, 99%);
+  border-color: hsl(243, 100%, 62%);
+}
 .billing-type div img {
   margin-bottom: 2rem;
 }
-.billing-type span { font-weight: bold; }
-.billing-type small {
-  display: block;
+.billing-type span { font-weight: bold; display: block; }
+.billing-type .monthly-bill, .billing-type .two-months-free {
   color: hsl(231, 11%, 63%);
+}
+.billing-type .free-yearly {
+  font-size: smaller;
+  color: hsl(213, 96%, 18%);
 }
 .billing-toggle {
   display: flex;
