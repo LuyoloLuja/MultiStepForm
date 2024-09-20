@@ -72,7 +72,7 @@
                 <p class="pb-2">You have the option of monthly or yearly billing.</p>
                 <div class="row pb-3">
                     <div class="col-sm-4">
-                        @Html.RadioButtonFor(m => m.BillingType.BillType, new { @class = "radio-input", id = "arcade-radio" })
+                        @Html.RadioButtonFor(m => m.BillingType.BillType, 9, new { @class = "radio-input", id = "arcade-radio" })
 
                         <label for="arcade-radio" class="billing-type">
                             <div>
@@ -85,7 +85,7 @@
                         </label>
                     </div>
                     <div class="col-sm-4">
-                        @Html.RadioButtonFor(m => m.BillingType.BillType, new { @class = "radio-input", id = "advanced-radio" })
+                        @Html.RadioButtonFor(m => m.BillingType.BillType, 12, new { @class = "radio-input", id = "advanced-radio" })
 
                         <label for="advanced-radio" class="billing-type">
                             <div>
@@ -98,7 +98,7 @@
                         </label>
                     </div>
                     <div class="col-sm-4">
-                        @Html.RadioButtonFor(m => m.BillingType.BillType, new { @class = "radio-input", id = "pro-radio" })
+                        @Html.RadioButtonFor(m => m.BillingType.BillType, 15, new { @class = "radio-input", id = "pro-radio" })
 
                         <label for="pro-radio" class="billing-type">
                             <div>
