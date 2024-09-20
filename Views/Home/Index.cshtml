@@ -72,7 +72,7 @@
                 <p class="pb-2">You have the option of monthly or yearly billing.</p>
                 <div class="row pb-3">
                     <div class="col-sm-4">
-                        @Html.RadioButtonFor(m => m.BillingType.BillType, 9, new { @class = "radio-input", id = "arcade-radio" })
+                        @Html.RadioButtonFor(m => m.BillingType.BillType, new { @class = "radio-input", id = "arcade-radio" })
 
                         <label for="arcade-radio" class="billing-type">
                             <div>
@@ -80,13 +80,12 @@
                             </div>
                             <!-- Plan name -->
                             <span>Arcade</span>
-                            <small class="monthly-bill">$9/mo</small>
-                            <small class="two-months-free hidden" style="color: hsl(231, 11%, 63%);">$90/mo</small>
+                            <small class="monthly-bill arcade-plan-bill"></small>
                             <small class="two-months-free hidden free-yearly">2 months free</small>
                         </label>
                     </div>
                     <div class="col-sm-4">
-                        @Html.RadioButtonFor(m => m.BillingType.BillType, 12, new { @class = "radio-input", id = "advanced-radio" })
+                        @Html.RadioButtonFor(m => m.BillingType.BillType, new { @class = "radio-input", id = "advanced-radio" })
 
                         <label for="advanced-radio" class="billing-type">
                             <div>
@@ -94,13 +93,12 @@
                             </div>
                             <!-- Plan name -->
                             <span>Advanced</span>
-                            <small class="monthly-bill">$12/mo</small>
-                            <small class="two-months-free hidden" style="color: hsl(231, 11%, 63%);">$120/yr</small>
+                            <small class="monthly-bill advanced-plan-bill"></small>
                             <small class="two-months-free hidden free-yearly">2 months free</small>
                         </label>
                     </div>
                     <div class="col-sm-4">
-                        @Html.RadioButtonFor(m => m.BillingType.BillType, 15, new { @class = "radio-input", id = "pro-radio" })
+                        @Html.RadioButtonFor(m => m.BillingType.BillType, new { @class = "radio-input", id = "pro-radio" })
 
                         <label for="pro-radio" class="billing-type">
                             <div>
@@ -108,8 +106,7 @@
                             </div>
                             <!-- Plan name -->
                             <span>Pro</span>
-                            <small class="monthly-bill">$15/mo</small>
-                            <small class="two-months-free hidden" style="color: hsl(231, 11%, 63%);">$150/yr</small>
+                            <small class="monthly-bill pro-plan-bill"></small>
                             <small class="two-months-free free-yearly hidden">2 months free</small>
                         </label>
                     </div>
@@ -134,7 +131,7 @@
 
                 <div class="add-ons-content">
                     <div class="checkbox-wrapper">
-                        <label for="online-service-checkbox" class="online-service-label">
+                        <label for="online-service-checkbox" class="add-ons-label online-service-label">
                             <div class="check">
                                 @Html.CheckBoxFor(m => m.AddOns.OnlineService, new { @id = "online-service-checkbox", @class = "custom-checkbox" })
                             </div>
@@ -147,7 +144,7 @@
                     </div>
 
                     <div class="checkbox-wrapper">
-                        <label for="large-storage-checkbox">
+                        <label for="large-storage-checkbox" class="add-ons-label large-storage">
                             <div class="check">
                                 @Html.CheckBoxFor(m => m.AddOns.LargerStorage, new { @id = "large-storage-checkbox", @class = "custom-checkbox" })
                             </div>
@@ -160,7 +157,7 @@
                     </div>
 
                     <div class="checkbox-wrapper">
-                        <label for="customizable-storage-checkbox">
+                        <label for="customizable-storage-checkbox" class="add-ons-label customizable-storage-label">
                             <div class="check">
                                 @Html.CheckBoxFor(m => m.AddOns.CustomizableStorage, new { @id = "customizable-storage-checkbox", @class = "custom-checkbox" })
                             </div>
