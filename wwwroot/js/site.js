@@ -104,12 +104,9 @@
 
     updateCycleBills(false, ".arcade-plan-bill", ".advanced-plan-bill", ".pro-plan-bill");
 
-    // Listen for changes on the checkbox
     $('#billing-cycle').change(function() {
         updateCycleBills($(this).is(':checked'), ".arcade-plan-bill", ".advanced-plan-bill", ".pro-plan-bill");
     });
-
-    // checkboxBgOnChange("online-service-checkbox", ".online-service-label");
 
     backButton("#btn-back-bill-type", ".select-plan", ".personal-info");
     backButton("#btn-back-add-ons", ".add-ons", ".select-plan");
