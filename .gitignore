@@ -1,0 +1,45 @@
+# ASP.NET Core files
+bin/
+obj/
+
+# User-specific files
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.userprefs
+
+# Logs
+*.log
+logs/
+
+# Configuration files
+appsettings.*.json
+
+# Secrets
+secrets.json
+
+# Build artifacts
+*.dll
+*.exe
+*.pdb
+*.cache
+*.db
+
+# Dependency directories
+node_modules/
+packages/
+
+# IDE-specific files
+*.vs/
+.idea/
+_ReSharper*/ 
+*.sln.docstates
+
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Other
+*.lock
