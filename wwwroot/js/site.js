@@ -1,7 +1,52 @@
 ﻿$(document).ready(function () {
+    const planCheckbox = document.querySelector("#billing-cycle");
+    const monthlyLabel = document.querySelector("#monthly-label");
+    const yearlyLabel = document.querySelector("#yearly-label");
+
+    let planDuration = "";
+
     let arcadeValue = 0;
     let advancedValue = 0;
     let proValue = 0;
+
+    let addOnsOnlineServiceValue = 0;
+    let addOnsLargerStorageValue = 0;
+    let addOnsCustomizableStorageValue = 0;
+
+    function updatePlanLabels() {
+        if (planCheckbox.checked) {
+            yearlyLabel.classList.add("active");
+            monthlyLabel.classList.remove("active");
+        } else {
+            monthlyLabel.classList.add("active");
+            yearlyLabel.classList.remove("active");
+        }
+    }
+
+    updatePlanLabels();
+
+    let updateAddOnsBills = (isYearly) => {
+        const onlineServiceElement = document.querySelector(".add-ons-online-service");
+        const largerStorageElement = document.querySelector(".add-ons-larger-storage");
+        const customizableStorageElement = document.querySelector(".add-ons-customizable-storage");
+
+        if(isYearly) {
+            planDuration = "yr";
+
+            addOnsOnlineServiceValue = 10;
+            addOnsLargerStorageValue = 20;
+            addOnsCustomizableStorageValue = 20;
+        } else {
+            planDuration = "mo";
+
+            addOnsOnlineServiceValue = 1;
+            addOnsLargerStorageValue = 2;
+            addOnsCustomizableStorageValue = 2;
+        }
+        onlineServiceElement.innerHTML = `+$${addOnsOnlineServiceValue}/${planDuration}`;
+        largerStorageElement.innerHTML = `+$${addOnsLargerStorageValue}/${planDuration}`;
+        customizableStorageElement.innerHTML = `+$${addOnsCustomizableStorageValue}/${planDuration}`;
+    }
 
     let updateCycleBills = (isYearly, arcade, advanced, pro) => {
         const arcadeElement = document.querySelector(arcade);
@@ -12,6 +57,8 @@
         const billElement = document.querySelectorAll(".monthly-bill");
 
         if (isYearly) {
+            planDuration = "yr";
+
             arcadeValue = 90;
             advancedValue = 120;
             proValue = 150;
@@ -21,10 +68,9 @@
                 billElement[i].style.display = "block";
                 billElement[i].style.padding = "0";
             }
-            arcadeElement.innerHTML = `$${arcadeValue}/yr`;
-            advancedElement.innerHTML = `$${advancedValue}/yr`;
-            proElement.innerHTML = `$${proValue}/yr`;
         } else {
+            planDuration = "mo";
+
             arcadeValue = 9;
             advancedValue = 12;
             proValue = 15;
@@ -32,10 +78,11 @@
             for (let i = 0; i < yearlyTwoMonthFree.length; i++) {
                 yearlyTwoMonthFree[i].classList.add("hidden");
             }
-            arcadeElement.innerHTML = `$${arcadeValue}/mo`;
-            advancedElement.innerHTML = `$${advancedValue}/mo`;
-            proElement.innerHTML = `$${proValue}/mo`;
         }
+        arcadeElement.innerHTML = `$${arcadeValue}/${planDuration}`;
+        advancedElement.innerHTML = `$${advancedValue}/${planDuration}`;
+        proElement.innerHTML = `$${proValue}/${planDuration}`;
+        updateAddOnsBills(isYearly);
     };
 
     const validateInputsAndDisplayNextTab = (
@@ -164,6 +211,7 @@
             ".advanced-plan-bill",
             ".pro-plan-bill"
         );
+        updatePlanLabels();
     });
 
     backButton("#btn-back-bill-type", ".select-plan", ".personal-info");
