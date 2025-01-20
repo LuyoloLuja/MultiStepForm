@@ -267,3 +267,4 @@ aside .step-container .step-info .step-descreption {
   background-color: hsl(231, 100%, 99%);
   border-color: hsl(243, 100%, 62%);
 }
+.text-small { font-size: small; }
