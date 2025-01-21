@@ -127,7 +127,6 @@
             }
 
             if (isValid) {
-
                 // TO DO --- debug - check why label is not changing color
                 if (currentSection == ".add-ons") {
                     checkboxBgOnChange("online-service-checkbox", ".online-service-label");

@@ -1,5 +1,6 @@
 html {
   font-size: 14px;
+  font-family: "Ubuntu", serif;
 }
 .hidden { display: none; }
 .shown { display: block; }
@@ -272,6 +273,23 @@ aside .step-container .step-info .step-descreption {
   padding: 5px 0;
   /* display: block; */
   font-size: 12px;
+  font-weight: 500;
   text-align: center;
   color: red;
+}
+.text-danger { font-weight: 500; }
+.finnishing-up-content {
+  border: 1px solid red;
+}
+.finnish-up-content-container {
+  border-radius: 5px;
+  background-color: hsl(229, 24%, 87%);
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+.whole-total {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
 }
