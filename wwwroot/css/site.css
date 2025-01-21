@@ -278,18 +278,38 @@ aside .step-container .step-info .step-descreption {
   color: red;
 }
 .text-danger { font-weight: 500; }
-.finnishing-up-content {
-  border: 1px solid red;
-}
 .finnish-up-content-container {
-  border-radius: 5px;
+  border-radius: 10px;
   background-color: hsl(229, 24%, 87%);
   padding: 15px;
+}
+.chosen-plan {
+  font-size: 12px;
   display: flex;
   justify-content: space-between;
 }
+.chosen-plan .chosen-plan-selected-container .chosen-plan-selected-value {
+  color: hsl(213, 96%, 18%);
+  font-weight: 500;
+}
+.chosen-plan .chosen-plan-selected-container span {
+  display: block;
+}
+.chosen-plan .chosen-plan-value-container {
+  color: hsl(213, 96%, 18%);
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .whole-total {
+  font-size: 12px;
   display: flex;
   justify-content: space-between;
   padding: 15px;
+}
+.chosen-add-ons div {
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
 }
