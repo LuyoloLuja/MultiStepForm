@@ -3,7 +3,15 @@
     const monthlyLabel = document.querySelector("#monthly-label");
     const yearlyLabel = document.querySelector("#yearly-label");
 
+    let planError = document.querySelector(".plan-text-danger");
+
+    let arcadePlanRadioBtnValue = document.querySelector("#arcade-radio");
+    let advancedPlanRadioBtnValue = document.querySelector("#advanced-radio");
+    let proPlanRadioBtnValue = document.querySelector("#pro-radio");
+
     let planDuration = "";
+    
+    let selectedPlanValue = 0;
 
     let arcadeValue = 0;
     let advancedValue = 0;
@@ -33,11 +41,19 @@
         if(isYearly) {
             planDuration = "yr";
 
+            arcadePlanRadioBtnValue.value = 90;
+            advancedPlanRadioBtnValue.value = 120;
+            proPlanRadioBtnValue.value = 150;
+
             addOnsOnlineServiceValue = 10;
             addOnsLargerStorageValue = 20;
             addOnsCustomizableStorageValue = 20;
         } else {
             planDuration = "mo";
+
+            arcadePlanRadioBtnValue.value = 9;
+            advancedPlanRadioBtnValue.value = 12;
+            proPlanRadioBtnValue.value = 15;
 
             addOnsOnlineServiceValue = 1;
             addOnsLargerStorageValue = 2;
@@ -97,18 +113,20 @@
         $(button).click(function () {
             let isValid = $(inputs).find("input").valid();
 
-            if (isValid) {
-                let selectedPlanValue = 0;
+            if (currentSection == ".select-plan") {
+                let selectedPlanElement = document.querySelector('input[name="BillingType.BillType"]:checked');
 
-                if (currentSection == ".select-plan") {
-                    let selectedPlanElement = document.querySelector(
-                        'input[name="BillingType.BillType"]:checked'
-                    );
-
-                    if (selectedPlanElement != null) {
-                        selectedPlanValue = selectedPlanElement.value;
-                    }
+                if (selectedPlanElement != null) {
+                    selectedPlanValue = selectedPlanElement.value;
+                } else if(selectedPlanValue == 0) {
+                    isValid = false;
+                    planError.classList.remove("hidden");
+                } else if(selectedPlanValue > 0) {
+                    planError.classList.add("hidden");
                 }
+            }
+
+            if (isValid) {
 
                 // TO DO --- debug - check why label is not changing color
                 if (currentSection == ".add-ons") {
@@ -132,6 +150,9 @@
 
     const backButton = (button, currentSection, prevSection) => {
         document.querySelector(button).addEventListener("click", () => {
+            if (prevSection == ".select-plan") {
+                planError.classList.add("hidden");
+            }
             document.querySelector(currentSection).classList.add("hidden");
             document.querySelector(prevSection).classList.remove("hidden");
         });

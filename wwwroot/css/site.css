@@ -268,3 +268,10 @@ aside .step-container .step-info .step-descreption {
   border-color: hsl(243, 100%, 62%);
 }
 .text-small { font-size: small; }
+.plan-text-danger {
+  padding: 5px 0;
+  /* display: block; */
+  font-size: 12px;
+  text-align: center;
+  color: red;
+}
