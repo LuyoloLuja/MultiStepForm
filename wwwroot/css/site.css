@@ -302,14 +302,21 @@ aside .step-container .step-info .step-descreption {
   justify-content: center;
   align-items: center;
 }
+.chosen-add-ons div {
+  font-size: 12px;
+  margin-bottom: 10px;
+  color: hsl(231, 11%, 63%);
+  display: flex;
+  justify-content: space-between;
+}
 .whole-total {
   font-size: 12px;
   display: flex;
   justify-content: space-between;
   padding: 15px;
 }
-.chosen-add-ons div {
-  font-size: 12px;
-  display: flex;
-  justify-content: space-between;
+.whole-total span { color: hsl(231, 11%, 63%); }
+.whole-total h6 {
+  color: hsl(243, 100%, 62%);
+  font-weight: 700;
 }
