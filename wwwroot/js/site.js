@@ -10,6 +10,10 @@
     let proPlanRadioBtnValue = document.querySelector("#pro-radio");
 
     let planDuration = "";
+    let chosenDurationDisplay = "";
+    let chosenAddOnDisplay = "";
+
+    let chosenPlanFinishTotal = 0;
     
     let selectedPlanValue = 0;
 
@@ -126,6 +130,10 @@
                 }
             }
 
+            if(currentSection == ".add-ons") {
+                addOnsAddition();
+            }
+
             if (isValid) {
                 // TO DO --- debug - check why label is not changing color
                 if (currentSection == ".add-ons") {
@@ -146,6 +154,54 @@
             }
         });
     };
+
+    const addOnsAddition = () => {
+        const chosenAddOnElement = document.querySelector(".chosen-plan-selected-value");
+
+        // let selectedAddOnsElement = document.querySelectorAll(".add-ons-content input");
+        // for(let i = 0; i < selectedAddOnsElement.length; i++) {
+        //     console.log(selectedAddOnsElement[i].value);
+        // }
+        let chosenPlanFinishElement = document.querySelector(".chosen-plan-finish-total");
+
+        if(planCheckbox.checked) {
+            chosenDurationDisplay = "Yearly";
+
+            switch (parseInt(selectedPlanValue)) {
+                    case 90:
+                    chosenAddOnDisplay = "Arcade";
+                    chosenPlanFinishTotal = 90;
+                        break;
+                    case 120:
+                        chosenAddOnDisplay = "Advanced";
+                        chosenPlanFinishTotal = 120;
+                        break;
+                    case 150:
+                        chosenAddOnDisplay = "Pro";
+                        chosenPlanFinishTotal = 150;
+                        break;
+            }
+        } else {
+            chosenDurationDisplay = "Monthly";
+
+            switch (parseInt(selectedPlanValue)) {
+                case 9:
+                    chosenAddOnDisplay = "Arcade";
+                    chosenPlanFinishTotal = 9;
+                    break;
+                case 12:
+                    chosenAddOnDisplay = "Advanced";
+                    chosenPlanFinishTotal = 12;
+                    break;
+                case 15:
+                    chosenAddOnDisplay = "Pro";
+                    chosenPlanFinishTotal = 15;
+                    break;
+            }
+        }
+        chosenAddOnElement.innerHTML = `${chosenAddOnDisplay} (${chosenDurationDisplay})`;
+        chosenPlanFinishElement.innerHTML = `$${chosenPlanFinishTotal}/${planDuration}`;
+    }
 
     const backButton = (button, currentSection, prevSection) => {
         document.querySelector(button).addEventListener("click", () => {

@@ -297,7 +297,7 @@ aside .step-container .step-info .step-descreption {
 }
 .chosen-plan .chosen-plan-value-container {
   color: hsl(213, 96%, 18%);
-  font-weight: 500;
+  font-weight: 700;
   display: flex;
   justify-content: center;
   align-items: center;

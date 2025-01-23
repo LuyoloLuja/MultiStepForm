@@ -131,7 +131,7 @@
                     <div class="checkbox-wrapper">
                         <label for="online-service-checkbox" class="add-ons-label online-service-label">
                             <div class="check">
-                                @Html.CheckBoxFor(m => m.AddOns.OnlineService, new { @id = "online-service-checkbox", @class = "custom-checkbox" })
+                                @Html.CheckBoxFor(m => m.AddOns.OnlineService, new { @id = "online-service-checkbox", @class = "custom-checkbox add-ons-checkbox" })
                             </div>
                             <div>
                                 <small style="font-weight: bold;">Online service</small>
@@ -144,7 +144,7 @@
                     <div class="checkbox-wrapper">
                         <label for="large-storage-checkbox" class="add-ons-label large-storage">
                             <div class="check">
-                                @Html.CheckBoxFor(m => m.AddOns.LargerStorage, new { @id = "large-storage-checkbox", @class = "custom-checkbox" })
+                                @Html.CheckBoxFor(m => m.AddOns.LargerStorage, new { @id = "large-storage-checkbox", @class = "custom-checkbox add-ons-checkbox" })
                             </div>
                             <div>
                                 <small style="font-weight: bold;">Large storage</small>
@@ -157,7 +157,7 @@
                     <div class="checkbox-wrapper">
                         <label for="customizable-storage-checkbox" class="add-ons-label customizable-storage-label">
                             <div class="check">
-                                @Html.CheckBoxFor(m => m.AddOns.CustomizableStorage, new { @id = "customizable-storage-checkbox", @class = "custom-checkbox" })
+                                @Html.CheckBoxFor(m => m.AddOns.CustomizableStorage, new { @id = "customizable-storage-checkbox", @class = "custom-checkbox add-ons-checkbox" })
                             </div>
                             <div>
                                 <small style="font-weight: bold;">Customizable Profile</small>
@@ -181,11 +181,11 @@
                 <div class="finnish-up-content-container">
                     <div class="chosen-plan">
                         <div class="chosen-plan-selected-container">
-                            <span class="chosen-plan-selected-value">Arcade (Monthly)</span>
+                            <span class="chosen-plan-selected-value"></span>
                             <span style="color: hsl(231, 11%, 63%); text-decoration: underline;">Change</span>
                         </div>
                         <div class="chosen-plan-value-container">
-                            <span>+9/mo</span>
+                            <span class="chosen-plan-finish-total">+9/mo</span>
                         </div>
                     </div>
                     
