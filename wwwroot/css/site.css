@@ -302,6 +302,10 @@ aside .step-container .step-info .step-descreption {
   justify-content: center;
   align-items: center;
 }
+hr {
+  color: hsl(231, 11%, 63%);
+  /* margin: 20px auto; */
+}
 .chosen-add-ons div {
   font-size: 12px;
   margin-bottom: 10px;
