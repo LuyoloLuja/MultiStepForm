@@ -169,8 +169,8 @@
 
             switch (parseInt(selectedPlanValue)) {
                     case 90:
-                    chosenAddOnDisplay = "Arcade";
-                    chosenPlanFinishTotal = 90;
+                        chosenAddOnDisplay = "Arcade";
+                        chosenPlanFinishTotal = 90;
                         break;
                     case 120:
                         chosenAddOnDisplay = "Advanced";
