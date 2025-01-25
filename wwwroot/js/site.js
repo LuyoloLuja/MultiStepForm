@@ -170,10 +170,6 @@
 			".chosen-plan-selected-value"
 		);
 
-		// let selectedAddOnsElement = document.querySelectorAll(".add-ons-content input");
-		// for(let i = 0; i < selectedAddOnsElement.length; i++) {
-		//     console.log(selectedAddOnsElement[i].value);
-		// }
 		let chosenPlanFinishElement = document.querySelector(
 			".chosen-plan-finish-total"
 		);
@@ -303,7 +299,6 @@
 		);
 		updatePlanLabels();
 	});
-
 	backButton("#btn-back-bill-type", ".select-plan", ".personal-info");
 	backButton("#btn-back-add-ons", ".add-ons", ".select-plan");
 	backButton("#btn-back-finish-up", ".finishing-up", ".add-ons");
