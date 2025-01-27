@@ -215,24 +215,22 @@
 		}
 		chosenAddOnElement.innerHTML = `${chosenAddOnDisplay} (${chosenDurationDisplay})`;
 		chosenPlanFinishElement.innerHTML = `$${chosenPlanFinishTotal}/${planDuration}`;
-
-		addOnsOnlineServiceCheckboxElement.addEventListener("change", () => {
-			let addOnsOnlineServiceActualValue = addOnsOnlineServiceCheckboxElement.checked;
-			console.log(addOnsOnlineServiceActualValue);
-			if(addOnsOnlineServiceActualValue == true) {
-				displaySelectedAddOnsOnly(addOnsOnlineServiceActualValue, "Online Service", addOnsOnlineServiceDisplayValue, planDuration);
-			}
-		})
 	};
-	
+
 	const displaySelectedAddOnsOnly = (isSelected, name, amount, durationPlan) => {
 		const mainContainer = document.querySelector(".chosen-add-ons");
-		const container = document.createElement("div");
-		const addOnName = document.createElement("span");
-		const spanPrice = document.createElement("span");
-
-		if(isSelected) {
+		const existingContainer = mainContainer.querySelector(`[data-name="${name}"]`);
+	
+		if (isSelected) {
+			if (existingContainer) return;
+	
+			const container = document.createElement("div");
+			container.setAttribute("data-name", name);
+	
+			const addOnName = document.createElement("span");
 			addOnName.innerHTML = name;
+	
+			const spanPrice = document.createElement("span");
 			spanPrice.innerHTML = `+${amount}/${durationPlan}`;
 			spanPrice.style.color = "hsl(213, 96%, 18%)";
 	
@@ -241,9 +239,16 @@
 	
 			mainContainer.appendChild(container);
 		} else {
-			container.remove();
+			if (existingContainer) {
+				mainContainer.removeChild(existingContainer);
+			}
 		}
-	}
+	};	
+
+	addOnsOnlineServiceCheckboxElement.addEventListener("change", () => {
+		let addOnsOnlineServiceActualValue = addOnsOnlineServiceCheckboxElement.checked;
+		displaySelectedAddOnsOnly(addOnsOnlineServiceActualValue, "Online Service", addOnsOnlineServiceDisplayValue, planDuration);
+	});
 
 	const backButton = (button, currentSection, prevSection) => {
 		document.querySelector(button).addEventListener("click", () => {
