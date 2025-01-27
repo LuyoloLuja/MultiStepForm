@@ -131,7 +131,7 @@
                     <div class="checkbox-wrapper">
                         <label for="online-service-checkbox" class="add-ons-label online-service-label">
                             <div class="check">
-                                @Html.CheckBoxFor(m => m.AddOns.OnlineService, new { @id = "online-service-checkbox", @class = "custom-checkbox add-ons-checkbox" })
+                                @Html.CheckBox("AddOns.OnlineService", false, new { @id = "online-service-checkbox", @class = "custom-checkbox add-ons-checkbox" })
                             </div>
                             <div>
                                 <small style="font-weight: bold;">Online service</small>
@@ -192,14 +192,14 @@
                     <hr>
                     
                     <div class="chosen-add-ons">
-                        <div>
+                        @* <div>
                             <span>Online service</span>
                             <span style="color: hsl(213, 96%, 18%);">+10/yr</span>
                         </div>
                         <div>
                             <span>Larger storage</span>
                             <span style="color: hsl(213, 96%, 18%);">+10/yr</span>
-                        </div>
+                        </div> *@
                     </div>
                 </div>
 

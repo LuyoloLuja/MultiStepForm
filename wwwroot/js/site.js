@@ -9,9 +9,9 @@
 	let advancedPlanRadioBtnValue = document.querySelector("#advanced-radio");
 	let proPlanRadioBtnValue = document.querySelector("#pro-radio");
 
-	let addOnsOnlineServiceActualValue = document.querySelector("#online-service-checkbox").checked;
-	let addOnsLargerStorageActualValue = document.querySelector("#large-storage-checkbox").checked;
-	let addOnsCustomizableActualValue = document.querySelector("#customizable-storage-checkbox").checked;
+	let addOnsOnlineServiceCheckboxElement = document.querySelector("#online-service-checkbox");
+	let addOnsLargerStorageCheckboxElement = document.querySelector("#large-storage-checkbox");
+	let addOnsCustomizableCheckboxElement = document.querySelector("#customizable-storage-checkbox");
 
 	let planDuration = "";
 	let chosenDurationDisplay = "";
@@ -216,8 +216,34 @@
 		chosenAddOnElement.innerHTML = `${chosenAddOnDisplay} (${chosenDurationDisplay})`;
 		chosenPlanFinishElement.innerHTML = `$${chosenPlanFinishTotal}/${planDuration}`;
 
-		
+		addOnsOnlineServiceCheckboxElement.addEventListener("change", () => {
+			let addOnsOnlineServiceActualValue = addOnsOnlineServiceCheckboxElement.checked;
+			console.log(addOnsOnlineServiceActualValue);
+			if(addOnsOnlineServiceActualValue == true) {
+				displaySelectedAddOnsOnly(addOnsOnlineServiceActualValue, "Online Service", addOnsOnlineServiceDisplayValue, planDuration);
+			}
+		})
 	};
+	
+	const displaySelectedAddOnsOnly = (isSelected, name, amount, durationPlan) => {
+		const mainContainer = document.querySelector(".chosen-add-ons");
+		const container = document.createElement("div");
+		const addOnName = document.createElement("span");
+		const spanPrice = document.createElement("span");
+
+		if(isSelected) {
+			addOnName.innerHTML = name;
+			spanPrice.innerHTML = `+${amount}/${durationPlan}`;
+			spanPrice.style.color = "hsl(213, 96%, 18%)";
+	
+			container.appendChild(addOnName);
+			container.appendChild(spanPrice);
+	
+			mainContainer.appendChild(container);
+		} else {
+			container.remove();
+		}
+	}
 
 	const backButton = (button, currentSection, prevSection) => {
 		document.querySelector(button).addEventListener("click", () => {
