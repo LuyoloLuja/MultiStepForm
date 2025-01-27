@@ -8,6 +8,12 @@ public class HomeController : Controller
 {
     public IActionResult Index()
     {
-        return View();
+        FormViewModel model = new FormViewModel();
+        model.AddOns = new AddOnsModel() {
+            OnlineService = false,
+            LargerStorage = false,
+            CustomizableStorage = false
+        };
+        return View(model);
     }
 }

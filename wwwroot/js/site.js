@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-	const planCheckbox = document.querySelector("#billing-cycle");
+	const planCheckboxElement = document.querySelector("#billing-cycle");
 	const monthlyLabel = document.querySelector("#monthly-label");
 	const yearlyLabel = document.querySelector("#yearly-label");
 
@@ -8,6 +8,10 @@
 	let arcadePlanRadioBtnValue = document.querySelector("#arcade-radio");
 	let advancedPlanRadioBtnValue = document.querySelector("#advanced-radio");
 	let proPlanRadioBtnValue = document.querySelector("#pro-radio");
+
+	let addOnsOnlineServiceActualValue = document.querySelector("#online-service-checkbox").checked;
+	let addOnsLargerStorageActualValue = document.querySelector("#large-storage-checkbox").checked;
+	let addOnsCustomizableActualValue = document.querySelector("#customizable-storage-checkbox").checked;
 
 	let planDuration = "";
 	let chosenDurationDisplay = "";
@@ -21,12 +25,12 @@
 	let advancedValue = 0;
 	let proValue = 0;
 
-	let addOnsOnlineServiceValue = 0;
-	let addOnsLargerStorageValue = 0;
-	let addOnsCustomizableStorageValue = 0;
+	let addOnsOnlineServiceDisplayValue = 0;
+	let addOnsLargerStorageDisplayValue = 0;
+	let addOnsCustomizableStorageDisplayValue = 0;
 
 	function updatePlanLabels() {
-		if (planCheckbox.checked) {
+		if (planCheckboxElement.checked) {
 			yearlyLabel.classList.add("active");
 			monthlyLabel.classList.remove("active");
 		} else {
@@ -55,9 +59,9 @@
 			advancedPlanRadioBtnValue.value = 120;
 			proPlanRadioBtnValue.value = 150;
 
-			addOnsOnlineServiceValue = 10;
-			addOnsLargerStorageValue = 20;
-			addOnsCustomizableStorageValue = 20;
+			addOnsOnlineServiceDisplayValue = 10;
+			addOnsLargerStorageDisplayValue = 20;
+			addOnsCustomizableStorageDisplayValue = 20;
 		} else {
 			planDuration = "mo";
 
@@ -65,13 +69,13 @@
 			advancedPlanRadioBtnValue.value = 12;
 			proPlanRadioBtnValue.value = 15;
 
-			addOnsOnlineServiceValue = 1;
-			addOnsLargerStorageValue = 2;
-			addOnsCustomizableStorageValue = 2;
+			addOnsOnlineServiceDisplayValue = 1;
+			addOnsLargerStorageDisplayValue = 2;
+			addOnsCustomizableStorageDisplayValue = 2;
 		}
-		onlineServiceElement.innerHTML = `+$${addOnsOnlineServiceValue}/${planDuration}`;
-		largerStorageElement.innerHTML = `+$${addOnsLargerStorageValue}/${planDuration}`;
-		customizableStorageElement.innerHTML = `+$${addOnsCustomizableStorageValue}/${planDuration}`;
+		onlineServiceElement.innerHTML = `+$${addOnsOnlineServiceDisplayValue}/${planDuration}`;
+		largerStorageElement.innerHTML = `+$${addOnsLargerStorageDisplayValue}/${planDuration}`;
+		customizableStorageElement.innerHTML = `+$${addOnsCustomizableStorageDisplayValue}/${planDuration}`;
 	};
 
 	let updateCycleBills = (isYearly, arcade, advanced, pro) => {
@@ -174,7 +178,7 @@
 			".chosen-plan-finish-total"
 		);
 
-		if (planCheckbox.checked) {
+		if (planCheckboxElement.checked) {
 			chosenDurationDisplay = "Yearly";
 
 			switch (parseInt(selectedPlanValue)) {
@@ -211,6 +215,8 @@
 		}
 		chosenAddOnElement.innerHTML = `${chosenAddOnDisplay} (${chosenDurationDisplay})`;
 		chosenPlanFinishElement.innerHTML = `$${chosenPlanFinishTotal}/${planDuration}`;
+
+		
 	};
 
 	const backButton = (button, currentSection, prevSection) => {
