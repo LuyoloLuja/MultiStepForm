@@ -9,6 +9,10 @@
 	let advancedPlanRadioBtnValue = document.querySelector("#advanced-radio");
 	let proPlanRadioBtnValue = document.querySelector("#pro-radio");
 
+	let onlineServiceLabel = document.querySelector(".online-service-label");
+    let largerStorageLabel = document.querySelector(".larger-storage-label");
+    let customizableStorageLabel = document.querySelector(".customizable-storage-label");
+
 	let addOnsOnlineServiceCheckboxElement = document.querySelector("#online-service-checkbox");
 	let addOnsLargerStorageCheckboxElement = document.querySelector("#large-storage-checkbox");
 	let addOnsCustomizableCheckboxElement = document.querySelector("#customizable-storage-checkbox");
@@ -170,9 +174,9 @@
 	};
 
 	const addOnsAddition = () => {
-		const chosenAddOnElement = document.querySelector(
-			".chosen-plan-selected-value"
-		);
+		const onlineServiceElement = document.querySelector(".add-ons-online-service");
+        const largerStorageElement = document.querySelector(".add-ons-larger-storage");
+        const customizableStorageElement = document.querySelector(".add-ons-customizable-storage");
 
 		let chosenPlanFinishElement = document.querySelector(
 			".chosen-plan-finish-total"
@@ -213,7 +217,10 @@
 					break;
 			}
 		}
-		chosenAddOnElement.innerHTML = `${chosenAddOnDisplay} (${chosenDurationDisplay})`;
+		onlineServiceElement.innerHTML = `${addOnsOnlineServiceDisplayValue} (${planDuration})`;
+		largerStorageElement.innerHTML = `+$${addOnsLargerStorageDisplayValue}/${planDuration}`;
+        customizableStorageElement.innerHTML = `+$${addOnsCustomizableStorageDisplayValue}/${planDuration}`;
+
 		chosenPlanFinishElement.innerHTML = `$${chosenPlanFinishTotal}/${planDuration}`;
 	};
 
@@ -222,7 +229,11 @@
 		const existingContainer = mainContainer.querySelector(`[data-name="${name}"]`);
 	
 		if (isSelected) {
-			if (existingContainer) return;
+			if (existingContainer) {
+				const spanPrice = existingContainer.querySelector("span:nth-child(2)");
+				spanPrice.innerHTML = `+${amount}/${durationPlan}`;
+				return;
+			}
 	
 			const container = document.createElement("div");
 			container.setAttribute("data-name", name);
@@ -243,12 +254,41 @@
 				mainContainer.removeChild(existingContainer);
 			}
 		}
-	};	
-
+	};
+	
 	addOnsOnlineServiceCheckboxElement.addEventListener("change", () => {
-		let addOnsOnlineServiceActualValue = addOnsOnlineServiceCheckboxElement.checked;
-		displaySelectedAddOnsOnly(addOnsOnlineServiceActualValue, "Online Service", addOnsOnlineServiceDisplayValue, planDuration);
+		const isChecked = addOnsOnlineServiceCheckboxElement.checked;
+	
+		const addOnsOnlineServiceActualValue = addOnsOnlineServiceDisplayValue;
+		const currentPlanDuration = planDuration;
+	
+		displaySelectedAddOnsOnly(
+			isChecked,
+			"Online Service",
+			addOnsOnlineServiceActualValue,
+			currentPlanDuration
+		);
 	});
+
+	addOnsLargerStorageCheckboxElement.addEventListener("change", () => {
+        const isChecked = addOnsLargerStorageCheckboxElement.checked;
+        displaySelectedAddOnsOnly(
+            isChecked,
+            "Larger Storage",
+            addOnsLargerStorageDisplayValue,
+            planDuration
+        );
+    });
+
+    addOnsCustomizableCheckboxElement.addEventListener("change", () => {
+        const isChecked = addOnsCustomizableCheckboxElement.checked;
+        displaySelectedAddOnsOnly(
+            isChecked,
+            "Customizable Storage",
+            addOnsCustomizableStorageDisplayValue,
+            planDuration
+        );
+    });
 
 	const backButton = (button, currentSection, prevSection) => {
 		document.querySelector(button).addEventListener("click", () => {
@@ -260,38 +300,75 @@
 		});
 	};
 
-	// TO DO - check why my labels are not changing on click
-	const checkboxBgOnChange = (checkbox, label) => {
-		let checkboxElement = document.getElementById(checkbox);
-		let labelElement = document.querySelector(label);
+	// Function to handle the label color change
+    const checkboxBgOnChange = (checkbox, label) => {
+        let checkboxElement = document.getElementById(checkbox);
+        let labelElement = document.querySelector(label);
 
-		// console.log(checkboxElement);
-		// console.log(labelElement);
+        checkboxElement.addEventListener("change", (event) => {
+            let isChecked = event.target.checked;
 
-		// if (checkboxElement.checked == true) {
-		//     labelElement.classList.add("custom-label");
-		// } else {
-		//     labelElement.classList.remove("custom-label");
-		// }
+            if (isChecked) {
+                labelElement.classList.add("custom-label");
+            } else {
+                labelElement.classList.remove("custom-label");
+            }
+        });
 
-		checkboxElement.addEventListener("change", (event) => {
-			let isChecked = event.target.checked;
+        // labelElement.addEventListener("click", (event) => {
+        //     checkboxElement.checked = !checkboxElement.checked;
+        //     checkboxElement.dispatchEvent(new Event("change"));
+        // });
+    };
 
-			console.log("isChecked " + isChecked);
-			if (isChecked) {
-				labelElement.classList.add("custom-label");
-			} else {
-				labelElement.classList.remove("custom-label");
-			}
-			console.log(labelElement);
-		});
+	if (addOnsOnlineServiceCheckboxElement && onlineServiceLabel) {
+        checkboxBgOnChange("online-service-checkbox", ".online-service-label");
+    }
 
-		// Handle clicks on the label itself to simulate a change
-		labelElement.addEventListener("click", (event) => {
-			checkboxElement.checked = !checkboxElement.checked; // Toggle checkbox state manually
-			checkboxElement.dispatchEvent(new Event("change")); // Trigger the 'change' event
-		});
-	};
+    if (addOnsLargerStorageCheckboxElement && largerStorageLabel) {
+        checkboxBgOnChange("large-storage-checkbox", ".larger-storage-label");
+    }
+
+    if (addOnsCustomizableCheckboxElement && customizableStorageLabel) {
+        checkboxBgOnChange("customizable-storage-checkbox", ".customizable-storage-label");
+    }
+
+    // Event listeners for each add-on checkbox
+    if (addOnsOnlineServiceCheckboxElement) {
+        addOnsOnlineServiceCheckboxElement.addEventListener("change", () => {
+            const isChecked = addOnsOnlineServiceCheckboxElement.checked;
+            displaySelectedAddOnsOnly(
+                isChecked,
+                "Online Service",
+                addOnsOnlineServiceDisplayValue,
+                planDuration
+            );
+        });
+    }
+
+    if (addOnsLargerStorageCheckboxElement) {
+        addOnsLargerStorageCheckboxElement.addEventListener("change", () => {
+            const isChecked = addOnsLargerStorageCheckboxElement.checked;
+            displaySelectedAddOnsOnly(
+                isChecked,
+                "Larger Storage",
+                addOnsLargerStorageDisplayValue,
+                planDuration
+            );
+        });
+    }
+
+    if (addOnsCustomizableCheckboxElement) {
+        addOnsCustomizableCheckboxElement.addEventListener("change", () => {
+            const isChecked = addOnsCustomizableCheckboxElement.checked;
+            displaySelectedAddOnsOnly(
+                isChecked,
+                "Customizable Storage",
+                addOnsCustomizableStorageDisplayValue,
+                planDuration
+            );
+        });
+    }
 
 	$("form").validate();
 
