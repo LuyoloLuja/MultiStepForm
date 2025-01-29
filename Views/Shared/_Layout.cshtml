@@ -31,7 +31,9 @@
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
             
         <!-- Custom Scripts -->
-        <script src="~/js/site.js" asp-append-version="true"></script>
+        <script type="module" src="/js/billingDom.js"></script>
+        <script type="module" src="/js/billing.js"></script>
+
         @await RenderSectionAsync("Scripts", required: false)
     </body>
 
