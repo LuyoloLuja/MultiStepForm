@@ -1,5 +1,6 @@
 import { getDOMElements } from "./billingDom.js";
 
+// TO DO : add eventlistener for my click button
 document.addEventListener("DOMContentLoaded", function () {
     const dom = getDOMElements();
 
