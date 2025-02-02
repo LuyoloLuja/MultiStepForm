@@ -17,6 +17,10 @@
 	let addOnsLargerStorageCheckboxElement = document.querySelector("#large-storage-checkbox");
 	let addOnsCustomizableCheckboxElement = document.querySelector("#customizable-storage-checkbox");
 
+	let onlineAddOnIsChecked = addOnsOnlineServiceCheckboxElement.checked;
+	let largerStorageIsChecked = addOnsLargerStorageCheckboxElement.checked;
+	let customizableAddOnIsChecked = addOnsCustomizableCheckboxElement.checekd;
+
 	let planDuration = "";
 	let chosenDurationDisplay = "";
 	let chosenAddOnDisplay = "";
@@ -29,9 +33,9 @@
 	let advancedValue = 0;
 	let proValue = 0;
 
-	let addOnsOnlineServiceDisplayValue = 0;
-	let addOnsLargerStorageDisplayValue = 0;
-	let addOnsCustomizableStorageDisplayValue = 0;
+	let addOnsOnlineServiceDisplayValue = 1;
+	let addOnsLargerStorageDisplayValue = 2;
+	let addOnsCustomizableStorageDisplayValue = 2;
 
 	function updatePlanLabels() {
 		if (planCheckboxElement.checked) {
@@ -66,6 +70,7 @@
 			addOnsOnlineServiceDisplayValue = 10;
 			addOnsLargerStorageDisplayValue = 20;
 			addOnsCustomizableStorageDisplayValue = 20;
+
 		} else {
 			planDuration = "mo";
 
@@ -178,12 +183,16 @@
         const largerStorageElement = document.querySelector(".add-ons-larger-storage");
         const customizableStorageElement = document.querySelector(".add-ons-customizable-storage");
 
-		let chosenPlanFinishElement = document.querySelector(
-			".chosen-plan-finish-total"
-		);
+		const totalAmountDurationElement = document.querySelector(".total-amount-per-duration");
+		const finishTotalAmountElement = document.querySelector(".finish-total-amount");
+
+		let totalAmountDurationText = "Total (per ";
+
+		let chosenPlanFinishElement = document.querySelector(".chosen-plan-finish-total");
 
 		if (planCheckboxElement.checked) {
 			chosenDurationDisplay = "Yearly";
+			totalAmountDurationText += "year)";
 
 			switch (parseInt(selectedPlanValue)) {
 				case 90:
@@ -201,6 +210,7 @@
 			}
 		} else {
 			chosenDurationDisplay = "Monthly";
+			totalAmountDurationText += "month)";
 
 			switch (parseInt(selectedPlanValue)) {
 				case 9:
@@ -222,6 +232,11 @@
         customizableStorageElement.innerHTML = `+$${addOnsCustomizableStorageDisplayValue}/${planDuration}`;
 
 		chosenPlanFinishElement.innerHTML = `$${chosenPlanFinishTotal}/${planDuration}`;
+
+		totalAmountDurationElement.innerHTML = totalAmountDurationText;
+		let finishTotalAmountValue = chosenPlanFinishTotal + (addOnsOnlineServiceDisplayValue + addOnsLargerStorageDisplayValue + addOnsCustomizableStorageDisplayValue);
+
+		finishTotalAmountElement.innerHTML = `$${finishTotalAmountValue}`;
 	};
 
 	const displaySelectedAddOnsOnly = (isSelected, name, amount, durationPlan) => {
