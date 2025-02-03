@@ -50,15 +50,9 @@
 	updatePlanLabels();
 
 	let updateAddOnsBills = (isYearly) => {
-		const onlineServiceElement = document.querySelector(
-			".add-ons-online-service"
-		);
-		const largerStorageElement = document.querySelector(
-			".add-ons-larger-storage"
-		);
-		const customizableStorageElement = document.querySelector(
-			".add-ons-customizable-storage"
-		);
+		const onlineServiceElement = document.querySelector(".add-ons-online-service");
+		const largerStorageElement = document.querySelector(".add-ons-larger-storage");
+		const customizableStorageElement = document.querySelector(".add-ons-customizable-storage");
 
 		if (isYearly) {
 			planDuration = "yr";
@@ -92,8 +86,7 @@
 		const advancedElement = document.querySelector(advanced);
 		const proElement = document.querySelector(pro);
 
-		const yearlyTwoMonthFree =
-			document.querySelectorAll(".two-months-free");
+		const yearlyTwoMonthFree = document.querySelectorAll(".two-months-free");
 		const billElement = document.querySelectorAll(".monthly-bill");
 
 		if (isYearly) {
@@ -125,21 +118,12 @@
 		updateAddOnsBills(isYearly);
 	};
 
-	const validateInputsAndDisplayNextTab = (
-		inputs,
-		button,
-		currentSection,
-		currentSecNumber,
-		followingSec,
-		followingSecNumber
-	) => {
+	const validateInputsAndDisplayNextTab = (inputs, button, currentSection, currentSecNumber, followingSec, followingSecNumber) => {
 		$(button).click(function () {
 			let isValid = $(inputs).find("input").valid();
 
 			if (currentSection == ".select-plan") {
-				let selectedPlanElement = document.querySelector(
-					'input[name="BillingType.BillType"]:checked'
-				);
+				let selectedPlanElement = document.querySelector('input[name="BillingType.BillType"]:checked');
 
 				if (selectedPlanElement != null) {
 					selectedPlanValue = selectedPlanElement.value;
@@ -277,32 +261,17 @@
 		const addOnsOnlineServiceActualValue = addOnsOnlineServiceDisplayValue;
 		const currentPlanDuration = planDuration;
 	
-		displaySelectedAddOnsOnly(
-			isChecked,
-			"Online Service",
-			addOnsOnlineServiceActualValue,
-			currentPlanDuration
-		);
+		displaySelectedAddOnsOnly(isChecked, "Online Service", addOnsOnlineServiceActualValue, currentPlanDuration);
 	});
 
 	addOnsLargerStorageCheckboxElement.addEventListener("change", () => {
         const isChecked = addOnsLargerStorageCheckboxElement.checked;
-        displaySelectedAddOnsOnly(
-            isChecked,
-            "Larger Storage",
-            addOnsLargerStorageDisplayValue,
-            planDuration
-        );
+        displaySelectedAddOnsOnly(isChecked, "Larger Storage", addOnsLargerStorageDisplayValue, planDuration);
     });
 
     addOnsCustomizableCheckboxElement.addEventListener("change", () => {
         const isChecked = addOnsCustomizableCheckboxElement.checked;
-        displaySelectedAddOnsOnly(
-            isChecked,
-            "Customizable Storage",
-            addOnsCustomizableStorageDisplayValue,
-            planDuration
-        );
+        displaySelectedAddOnsOnly(isChecked, "Customizable Storage", addOnsCustomizableStorageDisplayValue, planDuration);
     });
 
 	const backButton = (button, currentSection, prevSection) => {
@@ -352,80 +321,34 @@
     if (addOnsOnlineServiceCheckboxElement) {
         addOnsOnlineServiceCheckboxElement.addEventListener("change", () => {
             const isChecked = addOnsOnlineServiceCheckboxElement.checked;
-            displaySelectedAddOnsOnly(
-                isChecked,
-                "Online Service",
-                addOnsOnlineServiceDisplayValue,
-                planDuration
-            );
+            displaySelectedAddOnsOnly(isChecked, "Online Service", addOnsOnlineServiceDisplayValue, planDuration);
         });
     }
 
     if (addOnsLargerStorageCheckboxElement) {
         addOnsLargerStorageCheckboxElement.addEventListener("change", () => {
             const isChecked = addOnsLargerStorageCheckboxElement.checked;
-            displaySelectedAddOnsOnly(
-                isChecked,
-                "Larger Storage",
-                addOnsLargerStorageDisplayValue,
-                planDuration
-            );
+            displaySelectedAddOnsOnly(isChecked, "Larger Storage", addOnsLargerStorageDisplayValue, planDuration);
         });
     }
 
     if (addOnsCustomizableCheckboxElement) {
         addOnsCustomizableCheckboxElement.addEventListener("change", () => {
             const isChecked = addOnsCustomizableCheckboxElement.checked;
-            displaySelectedAddOnsOnly(
-                isChecked,
-                "Customizable Storage",
-                addOnsCustomizableStorageDisplayValue,
-                planDuration
-            );
+            displaySelectedAddOnsOnly(isChecked, "Customizable Storage", addOnsCustomizableStorageDisplayValue, planDuration);
         });
     }
 
 	$("form").validate();
 
-	validateInputsAndDisplayNextTab(
-		".personal-info",
-		"#validate-personal-info",
-		".personal-info",
-		".step-number-1",
-		".select-plan",
-		".step-number-2"
-	);
-	validateInputsAndDisplayNextTab(
-		".select-plan",
-		"#validate-billing-type",
-		".select-plan",
-		".step-number-2",
-		".add-ons",
-		".step-number-3"
-	);
-	validateInputsAndDisplayNextTab(
-		".add-ons",
-		"#validate-add-ons",
-		".add-ons",
-		".step-number-3",
-		".finishing-up",
-		".step-number-4"
-	);
+	validateInputsAndDisplayNextTab(".personal-info", "#validate-personal-info", ".personal-info", ".step-number-1", ".select-plan", ".step-number-2");
+	validateInputsAndDisplayNextTab(".select-plan", "#validate-billing-type", ".select-plan", ".step-number-2", ".add-ons", ".step-number-3");
+	validateInputsAndDisplayNextTab(".add-ons", "#validate-add-ons", ".add-ons", ".step-number-3", ".finishing-up", ".step-number-4");
 
-	updateCycleBills(
-		false,
-		".arcade-plan-bill",
-		".advanced-plan-bill",
-		".pro-plan-bill"
-	);
+	updateCycleBills(false, ".arcade-plan-bill", ".advanced-plan-bill", ".pro-plan-bill");
 
 	$("#billing-cycle").change(function () {
-		updateCycleBills(
-			$(this).is(":checked"),
-			".arcade-plan-bill",
-			".advanced-plan-bill",
-			".pro-plan-bill"
-		);
+		updateCycleBills($(this).is(":checked"), ".arcade-plan-bill", ".advanced-plan-bill", ".pro-plan-bill");
 		updatePlanLabels();
 	});
 	backButton("#btn-back-bill-type", ".select-plan", ".personal-info");
