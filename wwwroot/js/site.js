@@ -140,13 +140,6 @@
 			}
 
 			if (isValid) {
-				// TO DO --- debug - check why label is not changing color
-				// if (currentSection == ".add-ons") {
-				// 	checkboxBgOnChange(
-				// 		"online-service-checkbox",
-				// 		".online-service-label"
-				// 	);
-				// }
 				let sectionToHide = document.querySelector(currentSection);
 				let stepNumberToHide = document.querySelector(currentSecNumber);
 
