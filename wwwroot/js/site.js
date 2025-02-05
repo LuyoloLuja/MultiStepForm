@@ -17,9 +17,11 @@
 	let addOnsLargerStorageCheckboxElement = document.querySelector("#large-storage-checkbox");
 	let addOnsCustomizableCheckboxElement = document.querySelector("#customizable-storage-checkbox");
 
-	let onlineAddOnIsChecked = addOnsOnlineServiceCheckboxElement.checked;
-	let largerStorageIsChecked = addOnsLargerStorageCheckboxElement.checked;
-	let customizableAddOnIsChecked = addOnsCustomizableCheckboxElement.checekd;
+	let addOnElementsArray = [
+		addOnsOnlineServiceCheckboxElement,
+		addOnsLargerStorageCheckboxElement,
+		addOnsCustomizableCheckboxElement
+	];
 
 	let planDuration = "";
 	let chosenDurationDisplay = "";
@@ -36,6 +38,11 @@
 	let addOnsOnlineServiceDisplayValue = 1;
 	let addOnsLargerStorageDisplayValue = 2;
 	let addOnsCustomizableStorageDisplayValue = 2;
+
+	let addOnsOnlineServiceActualValue = 0;
+	let addOnsCustomizableStorageActualValue = 0;
+	let addOnsLargerStorageActualValue = 0;
+	
 
 	function updatePlanLabels() {
 		if (planCheckboxElement.checked) {
@@ -155,10 +162,44 @@
 		});
 	};
 
+	const getSelectedAddOnValue = (inputs) => {
+		inputs.forEach(element => {
+			element.addEventListener("change", (event) => {
+				let isChecked = event.target.checked;
+	
+				if (planDuration === "yr") {
+					if (element.classList.contains("online-service-checkbox")) {
+						addOnsOnlineServiceActualValue = isChecked ? 10 : 0;
+						displaySelectedAddOnsOnly(isChecked, "Online Service", addOnsOnlineServiceActualValue, planDuration);
+					} else if (element.classList.contains("large-storage-checkbox")) {
+						addOnsLargerStorageActualValue = isChecked ? 20 : 0;
+						displaySelectedAddOnsOnly(isChecked, "Larger Storage", addOnsLargerStorageActualValue, planDuration);
+					} else if (element.classList.contains("customizable-storage-checkbox")) {
+						addOnsCustomizableStorageActualValue = isChecked ? 20 : 0;
+						displaySelectedAddOnsOnly(isChecked, "Customizable Storage", addOnsCustomizableStorageActualValue, planDuration);
+					}
+				} else {
+					// Monthly plan
+					if (element.classList.contains("online-service-checkbox")) {
+						addOnsOnlineServiceActualValue = isChecked ? 1 : 0;
+						displaySelectedAddOnsOnly(isChecked, "Online Service", addOnsOnlineServiceActualValue, planDuration);
+					} else if (element.classList.contains("large-storage-checkbox")) {
+						addOnsLargerStorageActualValue = isChecked ? 2 : 0;
+						displaySelectedAddOnsOnly(isChecked, "Larger Storage", addOnsLargerStorageActualValue, planDuration);
+					} else if (element.classList.contains("customizable-storage-checkbox")) {
+						addOnsCustomizableStorageActualValue = isChecked ? 2 : 0;
+						displaySelectedAddOnsOnly(isChecked, "Customizable Storage", addOnsCustomizableStorageActualValue, planDuration);
+					}
+				}
+			});
+		});
+	};
+	
+
 	const addOnsAddition = () => {
 		const onlineServiceElement = document.querySelector(".add-ons-online-service");
-        const largerStorageElement = document.querySelector(".add-ons-larger-storage");
-        const customizableStorageElement = document.querySelector(".add-ons-customizable-storage");
+		const largerStorageElement = document.querySelector(".add-ons-larger-storage");
+		const customizableStorageElement = document.querySelector(".add-ons-customizable-storage");	
 
 		const totalAmountDurationElement = document.querySelector(".total-amount-per-duration");
 		const finishTotalAmountElement = document.querySelector(".finish-total-amount");
@@ -204,6 +245,7 @@
 					break;
 			}
 		}
+
 		onlineServiceElement.innerHTML = `+$${addOnsOnlineServiceDisplayValue}/${planDuration}`;
 		largerStorageElement.innerHTML = `+$${addOnsLargerStorageDisplayValue}/${planDuration}`;
         customizableStorageElement.innerHTML = `+$${addOnsCustomizableStorageDisplayValue}/${planDuration}`;
@@ -211,7 +253,7 @@
 		chosenPlanFinishElement.innerHTML = `$${chosenPlanFinishTotal}/${planDuration}`;
 
 		totalAmountDurationElement.innerHTML = totalAmountDurationText;
-		let finishTotalAmountValue = chosenPlanFinishTotal + (addOnsOnlineServiceDisplayValue + addOnsLargerStorageDisplayValue + addOnsCustomizableStorageDisplayValue);
+		let finishTotalAmountValue = chosenPlanFinishTotal + (addOnsOnlineServiceActualValue + addOnsLargerStorageActualValue + addOnsCustomizableStorageActualValue);
 
 		finishTotalAmountElement.innerHTML = `$${finishTotalAmountValue}`;
 	};
@@ -247,25 +289,8 @@
 			}
 		}
 	};
-	
-	addOnsOnlineServiceCheckboxElement.addEventListener("change", () => {
-		const isChecked = addOnsOnlineServiceCheckboxElement.checked;
-	
-		const addOnsOnlineServiceActualValue = addOnsOnlineServiceDisplayValue;
-		const currentPlanDuration = planDuration;
-	
-		displaySelectedAddOnsOnly(isChecked, "Online Service", addOnsOnlineServiceActualValue, currentPlanDuration);
-	});
 
-	addOnsLargerStorageCheckboxElement.addEventListener("change", () => {
-        const isChecked = addOnsLargerStorageCheckboxElement.checked;
-        displaySelectedAddOnsOnly(isChecked, "Larger Storage", addOnsLargerStorageDisplayValue, planDuration);
-    });
-
-    addOnsCustomizableCheckboxElement.addEventListener("change", () => {
-        const isChecked = addOnsCustomizableCheckboxElement.checked;
-        displaySelectedAddOnsOnly(isChecked, "Customizable Storage", addOnsCustomizableStorageDisplayValue, planDuration);
-    });
+	getSelectedAddOnValue(addOnElementsArray);
 
 	const backButton = (button, currentSection, prevSection) => {
 		document.querySelector(button).addEventListener("click", () => {
@@ -298,40 +323,6 @@
         // });
     };
 
-	if (addOnsOnlineServiceCheckboxElement && onlineServiceLabel) {
-        checkboxBgOnChange("online-service-checkbox", ".online-service-label");
-    }
-
-    if (addOnsLargerStorageCheckboxElement && largerStorageLabel) {
-        checkboxBgOnChange("large-storage-checkbox", ".larger-storage-label");
-    }
-
-    if (addOnsCustomizableCheckboxElement && customizableStorageLabel) {
-        checkboxBgOnChange("customizable-storage-checkbox", ".customizable-storage-label");
-    }
-
-    // Event listeners for each add-on checkbox
-    if (addOnsOnlineServiceCheckboxElement) {
-        addOnsOnlineServiceCheckboxElement.addEventListener("change", () => {
-            const isChecked = addOnsOnlineServiceCheckboxElement.checked;
-            displaySelectedAddOnsOnly(isChecked, "Online Service", addOnsOnlineServiceDisplayValue, planDuration);
-        });
-    }
-
-    if (addOnsLargerStorageCheckboxElement) {
-        addOnsLargerStorageCheckboxElement.addEventListener("change", () => {
-            const isChecked = addOnsLargerStorageCheckboxElement.checked;
-            displaySelectedAddOnsOnly(isChecked, "Larger Storage", addOnsLargerStorageDisplayValue, planDuration);
-        });
-    }
-
-    if (addOnsCustomizableCheckboxElement) {
-        addOnsCustomizableCheckboxElement.addEventListener("change", () => {
-            const isChecked = addOnsCustomizableCheckboxElement.checked;
-            displaySelectedAddOnsOnly(isChecked, "Customizable Storage", addOnsCustomizableStorageDisplayValue, planDuration);
-        });
-    }
-
 	$("form").validate();
 
 	validateInputsAndDisplayNextTab(".personal-info", "#validate-personal-info", ".personal-info", ".step-number-1", ".select-plan", ".step-number-2");
@@ -339,7 +330,7 @@
 	validateInputsAndDisplayNextTab(".add-ons", "#validate-add-ons", ".add-ons", ".step-number-3", ".finishing-up", ".step-number-4");
 
 	updateCycleBills(false, ".arcade-plan-bill", ".advanced-plan-bill", ".pro-plan-bill");
-
+	
 	$("#billing-cycle").change(function () {
 		updateCycleBills($(this).is(":checked"), ".arcade-plan-bill", ".advanced-plan-bill", ".pro-plan-bill");
 		updatePlanLabels();
