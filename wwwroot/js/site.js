@@ -204,7 +204,7 @@
 					break;
 			}
 		}
-		onlineServiceElement.innerHTML = `${addOnsOnlineServiceDisplayValue} (${planDuration})`;
+		onlineServiceElement.innerHTML = `+$${addOnsOnlineServiceDisplayValue}/${planDuration}`;
 		largerStorageElement.innerHTML = `+$${addOnsLargerStorageDisplayValue}/${planDuration}`;
         customizableStorageElement.innerHTML = `+$${addOnsCustomizableStorageDisplayValue}/${planDuration}`;
 
