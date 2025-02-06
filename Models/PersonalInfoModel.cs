@@ -4,7 +4,7 @@ namespace MultiStepForm.Models;
 
 public class PersonalInfoModel
 {
-    public int Id { get; set; }
+    public Guid Id { get; set; }
 
     [Required(ErrorMessage = "This field is required")]
     public string? Name { get; set; }
@@ -14,7 +14,7 @@ public class PersonalInfoModel
     public string? Email { get; set; }
 
     [Required(ErrorMessage = "This field is required")]
-    [Phone(ErrorMessage = "Invalid phone number")]
+    [RegularExpression("^([0-9]{10})$", ErrorMessage = "Invalid Mobile Number.")]
     [Display(Name = "Phone Number")]
     public string? PhoneNumber { get; set; }
 }

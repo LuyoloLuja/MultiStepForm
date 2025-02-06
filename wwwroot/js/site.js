@@ -24,8 +24,6 @@
 	];
 
 	let planDuration = "";
-	let chosenDurationDisplay = "";
-	let chosenAddOnDisplay = "";
 
 	let chosenPlanFinishTotal = 0;
 
@@ -253,7 +251,7 @@
 		totalAmountDurationElement.innerHTML = totalAmountDurationText;
 		let finishTotalAmountValue = chosenPlanFinishTotal + (addOnsOnlineServiceActualValue + addOnsLargerStorageActualValue + addOnsCustomizableStorageActualValue);
 
-		finishTotalAmountElement.innerHTML = `$${finishTotalAmountValue}`;
+		finishTotalAmountElement.innerHTML = `$${finishTotalAmountValue}/${planDuration}`;
 	};
 
 	const displaySelectedAddOnsOnly = (isSelected, name, amount, durationPlan) => {
@@ -338,4 +336,26 @@
 	backButton("#btn-back-bill-type", ".select-plan", ".personal-info");
 	backButton("#btn-back-add-ons", ".add-ons", ".select-plan");
 	backButton("#btn-back-finish-up", ".finishing-up", ".add-ons");
+
+	$("form").submit(function (event) {
+		event.preventDefault();
+
+		$.ajax({
+			type: "POST",
+			url: '/Home/Index',
+			data: $(this).serialize(),
+			success: function (response) {
+				$(".personal-info").addClass("hidden");
+				$(".select-plan").addClass("hidden");
+				$(".add-ons").addClass("hidden");
+				$(".finishing-up").addClass("hidden");
+
+				$(".success").removeClass("hidden").html(response);
+			},
+			error: function (xhr, status, error) {
+				console.log("AJAX error:", error);
+				alert("Error: " + xhr.status + " - " + xhr.statusText);
+			}
+		})
+	})
 });

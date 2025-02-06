@@ -2,8 +2,8 @@
 
 public class BillingType
 {
-    public int Id { get; set; }
-    public int BillType { get; set; } = 9;
-    public int UserId { get; set; }
+    public Guid Id { get; set; }
+    public int BillType { get; set; }
+    public Guid UserId { get; set; }
     
 }
