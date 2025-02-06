@@ -54,8 +54,6 @@
 		}
 	}
 
-	updatePlanLabels();
-
 	let updateAddOnsBills = (isYearly) => {
 		const onlineServiceElement = document.querySelector(".add-ons-online-service");
 		const largerStorageElement = document.querySelector(".add-ons-larger-storage");
@@ -290,8 +288,6 @@
 		}
 	};
 
-	getSelectedAddOnValue(addOnElementsArray);
-
 	const backButton = (button, currentSection, prevSection) => {
 		document.querySelector(button).addEventListener("click", () => {
 			if (prevSection == ".select-plan") {
@@ -325,10 +321,14 @@
 
 	$("form").validate();
 
+	updatePlanLabels();
+
 	validateInputsAndDisplayNextTab(".personal-info", "#validate-personal-info", ".personal-info", ".step-number-1", ".select-plan", ".step-number-2");
 	validateInputsAndDisplayNextTab(".select-plan", "#validate-billing-type", ".select-plan", ".step-number-2", ".add-ons", ".step-number-3");
 	validateInputsAndDisplayNextTab(".add-ons", "#validate-add-ons", ".add-ons", ".step-number-3", ".finishing-up", ".step-number-4");
 
+	getSelectedAddOnValue(addOnElementsArray);
+	
 	updateCycleBills(false, ".arcade-plan-bill", ".advanced-plan-bill", ".pro-plan-bill");
 	
 	$("#billing-cycle").change(function () {
