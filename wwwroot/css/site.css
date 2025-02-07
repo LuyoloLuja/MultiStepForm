@@ -50,7 +50,7 @@ body {
   border-radius: 0.8rem;
 }
 aside, section { 
-  height: auto; /* todo - change height to fit-content  */
+  height: 90vh; /* todo - change height to fit-content  */
   border-radius: 0.8rem;
 }
 aside {
@@ -90,9 +90,12 @@ aside .step-container .step-info .step-descreption {
   font-weight: 700;
 }
 .main-info {
-  padding: 3rem 5rem;
+  padding: 0 5rem;
 }
-.main-info h3 { color: hsl(213, 96%, 18%); }
+.main-info h3 { 
+  color: hsl(213, 96%, 18%);
+  padding-top: 3rem;
+}
 .main-info label { font-size: 14px; color: hsl(213, 96%, 18%); }
 .main-info p { color: hsl(231, 11%, 63%); font-size: 14px; }
 .btn-container { text-align: right; }
@@ -324,3 +327,18 @@ hr {
   color: hsl(243, 100%, 62%);
   font-weight: 700;
 }
+.success {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* border: 1px solid blue; */
+}
+.success-content {
+  color: hsl(213, 96%, 18%);
+  text-align: center;
+  margin: 10px;
+  /* border: 1px solid red; */
+}
+.success-content img { margin-bottom: 2rem; }
+
+.success-content h2 { font-weight: 700; }

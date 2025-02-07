@@ -149,9 +149,11 @@
 				let sectionToDisplay = document.querySelector(followingSec);
 				let stepNumberToDisplay = document.querySelector(followingSecNumber);
 
+				sectionToHide.classList.add("animate__animated", "animate__backOutLeft");
 				sectionToHide.classList.add("hidden");
 				stepNumberToHide.classList.remove("step-number");
 
+				sectionToDisplay.classList.add("animate__animated", "animate__backInRight");
 				sectionToDisplay.classList.remove("hidden");
 				stepNumberToDisplay.classList.add("step-number");
 			}
@@ -351,6 +353,7 @@
 				$(".finishing-up").addClass("hidden");
 
 				$(".success").removeClass("hidden").html(response);
+				$(".success").addClass("animate__animated animate__backInDown");
 			},
 			error: function (xhr, status, error) {
 				console.log("AJAX error:", error);
