@@ -1,3 +1,4 @@
+@import "smaller_devices.css";
 html {
   font-size: 14px;
   font-family: "Ubuntu", serif;
@@ -19,10 +20,10 @@ html {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
-html {
+/* html {
   position: relative;
   min-height: 100%;
-}
+} */
 
 body {
   margin: 20px 0;

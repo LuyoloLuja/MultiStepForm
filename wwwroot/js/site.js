@@ -293,8 +293,14 @@
 			if (prevSection == ".select-plan") {
 				planError.classList.add("hidden");
 			}
-			document.querySelector(currentSection).classList.add("hidden");
-			document.querySelector(prevSection).classList.remove("hidden");
+			let currentSec = document.querySelector(currentSection);
+			let previousSec = document.querySelector(prevSection);
+
+			currentSec.classList.add("hidden", "animate__backOutRight");
+			currentSec.classList.remove("animate__backInRight");
+
+			previousSec.classList.remove("hidden", "animate__backOutLeft");
+			previousSec.classList.add("animate__backInLeft");
 		});
 	};
 
