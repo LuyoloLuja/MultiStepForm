@@ -149,12 +149,12 @@
 				let sectionToDisplay = document.querySelector(followingSec);
 				let stepNumberToDisplay = document.querySelector(followingSecNumber);
 
-				sectionToHide.classList.add("animate__animated", "animate__backOutLeft");
-				sectionToHide.classList.add("hidden");
-				stepNumberToHide.classList.remove("step-number");
+				sectionToHide.classList.add("animate__animated", "animate__backOutLeft", "hidden");
 
 				sectionToDisplay.classList.add("animate__animated", "animate__backInRight");
-				sectionToDisplay.classList.remove("hidden");
+				sectionToDisplay.classList.remove("animate__backOutLeft", "hidden");
+
+				stepNumberToHide.classList.remove("step-number");
 				stepNumberToDisplay.classList.add("step-number");
 			}
 		});
@@ -193,7 +193,6 @@
 		});
 	};
 	
-
 	const addOnsAddition = () => {
 		const onlineServiceElement = document.querySelector(".add-ons-online-service");
 		const largerStorageElement = document.querySelector(".add-ons-larger-storage");
@@ -243,7 +242,6 @@
 					break;
 			}
 		}
-
 		onlineServiceElement.innerHTML = `+$${addOnsOnlineServiceDisplayValue}/${planDuration}`;
 		largerStorageElement.innerHTML = `+$${addOnsLargerStorageDisplayValue}/${planDuration}`;
         customizableStorageElement.innerHTML = `+$${addOnsCustomizableStorageDisplayValue}/${planDuration}`;
@@ -296,11 +294,11 @@
 			let currentSec = document.querySelector(currentSection);
 			let previousSec = document.querySelector(prevSection);
 
-			currentSec.classList.add("hidden", "animate__backOutRight");
+			currentSec.classList.add("animate__backOutRight", "hidden");
 			currentSec.classList.remove("animate__backInRight");
 
-			previousSec.classList.remove("hidden", "animate__backOutLeft");
 			previousSec.classList.add("animate__backInLeft");
+			previousSec.classList.remove("animate__backOutLeft", "hidden");
 		});
 	};
 
