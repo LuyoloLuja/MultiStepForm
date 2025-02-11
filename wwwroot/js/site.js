@@ -9,9 +9,9 @@
 	let advancedPlanRadioBtnValue = document.querySelector("#advanced-radio");
 	let proPlanRadioBtnValue = document.querySelector("#pro-radio");
 
-	let onlineServiceLabel = document.querySelector(".online-service-label");
-    let largerStorageLabel = document.querySelector(".larger-storage-label");
-    let customizableStorageLabel = document.querySelector(".customizable-storage-label");
+	// let onlineServiceLabel = document.querySelector(".online-service-label");
+    // let largerStorageLabel = document.querySelector(".larger-storage-label");
+    // let customizableStorageLabel = document.querySelector(".customizable-storage-label");
 
 	let addOnsOnlineServiceCheckboxElement = document.querySelector("#online-service-checkbox");
 	let addOnsLargerStorageCheckboxElement = document.querySelector("#large-storage-checkbox");
@@ -303,25 +303,25 @@
 	};
 
 	// Function to handle the label color change
-    const checkboxBgOnChange = (checkbox, label) => {
-        let checkboxElement = document.getElementById(checkbox);
-        let labelElement = document.querySelector(label);
+    // const checkboxBgOnChange = (checkbox, label) => {
+    //     let checkboxElement = document.getElementById(checkbox);
+    //     let labelElement = document.querySelector(label);
 
-        checkboxElement.addEventListener("change", (event) => {
-            let isChecked = event.target.checked;
+    //     checkboxElement.addEventListener("change", (event) => {
+    //         let isChecked = event.target.checked;
 
-            if (isChecked) {
-                labelElement.classList.add("custom-label");
-            } else {
-                labelElement.classList.remove("custom-label");
-            }
-        });
+    //         if (isChecked) {
+    //             labelElement.classList.add("custom-label");
+    //         } else {
+    //             labelElement.classList.remove("custom-label");
+    //         }
+    //     });
 
-        // labelElement.addEventListener("click", (event) => {
-        //     checkboxElement.checked = !checkboxElement.checked;
-        //     checkboxElement.dispatchEvent(new Event("change"));
-        // });
-    };
+    //     // labelElement.addEventListener("click", (event) => {
+    //     //     checkboxElement.checked = !checkboxElement.checked;
+    //     //     checkboxElement.dispatchEvent(new Event("change"));
+    //     // });
+    // };
 
 	$("form").validate();
 
