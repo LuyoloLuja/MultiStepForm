@@ -149,10 +149,8 @@
 				let sectionToDisplay = document.querySelector(followingSec);
 				let stepNumberToDisplay = document.querySelector(followingSecNumber);
 
-				sectionToHide.classList.add("animate__animated", "animate__backOutLeft", "hidden");
-
-				sectionToDisplay.classList.add("animate__animated", "animate__backInRight");
-				sectionToDisplay.classList.remove("animate__backOutLeft", "hidden");
+				sectionToHide.classList.add("hidden");
+				sectionToDisplay.classList.remove("hidden");
 
 				stepNumberToHide.classList.remove("step-number");
 				stepNumberToDisplay.classList.add("step-number");
@@ -286,7 +284,7 @@
 		}
 	};
 
-	const backButton = (button, currentSection, prevSection) => {
+	const backButton = (button, currentSection, prevSection, currentSecNumber, followingSecNumber) => {
 		document.querySelector(button).addEventListener("click", () => {
 			if (prevSection == ".select-plan") {
 				planError.classList.add("hidden");
@@ -294,11 +292,18 @@
 			let currentSec = document.querySelector(currentSection);
 			let previousSec = document.querySelector(prevSection);
 
-			currentSec.classList.add("animate__backOutRight", "hidden");
-			currentSec.classList.remove("animate__backInRight");
+			let currentStepNumber = document.querySelector(currentSecNumber);
+			let previousStepNumber = document.querySelector(followingSecNumber);
 
-			previousSec.classList.add("animate__backInLeft");
-			previousSec.classList.remove("animate__backOutLeft", "hidden");
+			currentSec.classList.add("hidden");
+			previousSec.classList.remove("hidden");
+
+			// if(currentSec == ".personal-info" || currentSec == ".finishing-up") {
+
+			// }
+
+			currentStepNumber.classList.add("step-number");
+			previousStepNumber.classList.remove("step-number");
 		});
 	};
 
@@ -339,9 +344,9 @@
 		updateCycleBills($(this).is(":checked"), ".arcade-plan-bill", ".advanced-plan-bill", ".pro-plan-bill");
 		updatePlanLabels();
 	});
-	backButton("#btn-back-bill-type", ".select-plan", ".personal-info");
-	backButton("#btn-back-add-ons", ".add-ons", ".select-plan");
-	backButton("#btn-back-finish-up", ".finishing-up", ".add-ons");
+	backButton("#btn-back-bill-type", ".select-plan", ".personal-info", ".step-number-1", ".step-number-1");
+	backButton("#btn-back-add-ons", ".add-ons", ".select-plan", ".step-number-3", ".step-number-2");
+	backButton("#btn-back-finish-up", ".finishing-up", ".add-ons", ".step-number-4", ".step-number-3");
 
 	$("form").submit(function (event) {
 		event.preventDefault();
