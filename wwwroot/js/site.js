@@ -286,24 +286,25 @@
 
 	const backButton = (button, currentSection, prevSection, currentSecNumber, followingSecNumber) => {
 		document.querySelector(button).addEventListener("click", () => {
-			if (prevSection == ".select-plan") {
-				planError.classList.add("hidden");
-			}
 			let currentSec = document.querySelector(currentSection);
 			let previousSec = document.querySelector(prevSection);
 
 			let currentStepNumber = document.querySelector(currentSecNumber);
 			let previousStepNumber = document.querySelector(followingSecNumber);
 
+			if (prevSection == ".select-plan") {
+				planError.classList.add("hidden");
+			}
+
 			currentSec.classList.add("hidden");
 			previousSec.classList.remove("hidden");
 
-			// if(currentSec == ".personal-info" || currentSec == ".finishing-up") {
+			currentStepNumber.classList.remove("step-number");
+			previousStepNumber.classList.add("step-number");
 
-			// }
-
-			currentStepNumber.classList.add("step-number");
-			previousStepNumber.classList.remove("step-number");
+			if(currentSec.classList.contains("select-plan")) {
+				document.querySelector(".step-number-2").classList.remove("step-number");
+			}
 		});
 	};
 
