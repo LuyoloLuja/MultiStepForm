@@ -1,4 +1,38 @@
-@media (max-width: 480px) {
-  
+@media (max-device-width: 48rem) {
+  body {
+    margin: 0;
+  }
+  .container {
+    width: 100%;
+    padding: 0;
+    border-radius: 0;
+  }
+  aside {
+    height: 25vh; /* todo - change height to fit-content  */
+    border-radius: 0;
+    background: url('../images/bg-sidebar-mobile.svg');
+    padding: 4rem 1rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  .sidebar .row {
+    display: flex;
+    flex-direction: row; /* Arrange steps in a row */
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem; /* Space between steps */
+    flex-wrap: nowrap; /* Prevent wrapping */
+    height: 2.5rem; /* Match step-container span */
+  }
+
+  .step-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .step-info {
+      display: none;
+  }
 }
-  
