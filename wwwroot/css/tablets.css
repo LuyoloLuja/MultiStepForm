@@ -1,0 +1,41 @@
+/* Target devices with screen width between 600px and 1024px */
+@media (min-width: 600px) and (max-width: 1024px) {
+    body {
+        margin: 0;
+        /* position: relative; */
+      }
+      .container {
+        width: 100%;
+        padding: 0;
+        border-radius: 0;
+      }
+    .content { display: block; }
+    aside {
+        height: 30vh; 
+        width: 100%;
+        padding: 4rem;
+        display: flex;
+        justify-content: space-around;
+        border-radius: 0;
+        background: url('../images/bg-sidebar-mobile.svg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+      }
+
+    aside .step-container {
+      align-items: normal;
+      line-height: 0.5rem;
+      font-size: 18px;
+    }
+    aside .step-container span {
+      margin: 0;
+      width: 4.5rem;
+      height: 4.5rem;
+    }
+    .step-info { display: none; }
+    .main-info {
+      /* padding: 0;
+      background-color: hsl(229, 24%, 87%); */
+    }
+}
