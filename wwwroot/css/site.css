@@ -1,5 +1,5 @@
 html {
-  font-size: 14px;
+  /* font-size: 14px; */
   font-family: "Ubuntu", serif;
 }
 .hidden { display: none; }
@@ -9,26 +9,17 @@ html {
   background-color: hsl(206, 94%, 87%);
   color: hsl(213, 96%, 18%);
 }
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
-
-/* html {
-  position: relative;
-  min-height: 100%;
-} */
 
 body {
   margin: 20px 0;
   background-color: hsl(229, 24%, 87%);
   font-family: Ubuntu;
 }
+p { font-size: 16px; }
 /* Apply 14px font size to placeholders for all input fields */
 ::-webkit-input-placeholder { /* Chrome, Safari, Edge */
   font-size: 14px;
@@ -100,7 +91,7 @@ aside .step-container .step-info .step-descreption {
   padding-top: 3rem;
 }
 .main-info label { font-size: 14px; color: hsl(213, 96%, 18%); }
-.main-info p { color: hsl(231, 11%, 63%); font-size: 14px; }
+.main-info p { color: hsl(231, 11%, 63%); }
 .btn-container { text-align: right; }
 .btn-container-center-space {
   display: flex;
@@ -153,8 +144,9 @@ aside .step-container .step-info .step-descreption {
   background-color: hsl(231, 100%, 99%);
   border-color: hsl(243, 100%, 62%);
 }
-.billing-type div img {
+.billing-type img {
   margin-bottom: 2rem;
+  display: block;
 }
 .billing-type span { font-weight: bold; display: block; }
 .billing-type .monthly-bill, .billing-type .two-months-free {

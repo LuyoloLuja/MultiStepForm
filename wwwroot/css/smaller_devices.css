@@ -1,6 +1,7 @@
 @media (max-device-width: 48rem) {
   body {
     margin: 0;
+    /* position: relative; */
   }
   .container {
     width: 100%;
@@ -47,5 +48,35 @@
     position: absolute;
     top: 15vh;
     transform: translate(18px); /* get the correct numbers to align centre */
+  }
+  .billing-type {
+    margin-bottom: .8rem;
+    padding: 15px;
+    display: flex;
+    gap: 1rem;
+    border-radius: 10px;
+  }
+  .billing-type img {
+    margin-bottom: 0;
+  }
+  .billing-toggle {
+    padding: 1rem 0 2rem 0;
+  }
+  .add-ons-content .checkbox-wrapper { 
+    margin-bottom: .8rem;
+  }
+  .add-ons-content .checkbox-wrapper label {
+    padding: 15px;
+    border-radius: 10px;
+  }
+  .btn-container {
+    background-color: #fff;
+    /* position: absolute;
+    bottom: 0; */
+}
+  .success-content {
+    color: hsl(213, 96%, 18%);
+    text-align: center;
+    margin: 10px;
   }
 }

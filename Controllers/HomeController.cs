@@ -7,7 +7,7 @@ namespace MultiStepForm.Controllers;
 
 public class HomeController : Controller
 {
-    List<UserDto> users = new List<UserDto>();
+    private readonly List<UserDto> USERS = new List<UserDto>();
 
     [HttpGet]
     public IActionResult Index()
@@ -20,7 +20,7 @@ public class HomeController : Controller
     {
         if(ModelState.IsValid)
         {
-            var existingUser = users.FirstOrDefault(m => m.Email == model.PersonalInfo.Email);
+            var existingUser = USERS.FirstOrDefault(m => m.Email == model.PersonalInfo.Email);
 
             if(existingUser == null) // user doesn't exist
             {
@@ -32,6 +32,7 @@ public class HomeController : Controller
                 int onlineServiceAddOnValue = 0;
                 int largerStorageAddOnValue = 0;
                 int customizableStorageAddOnValue = 0;
+                int total = 0;
 
                 if(billCycleIsYearly)
                 {
@@ -44,6 +45,7 @@ public class HomeController : Controller
                     largerStorageAddOnValue = model.AddOns.LargerStorage ? 2 : 0;
                     customizableStorageAddOnValue = model.AddOns.CustomizableStorage ? 2 : 0;
                 }
+                total = billTypeValue + onlineServiceAddOnValue + largerStorageAddOnValue + customizableStorageAddOnValue;
 
                 UserDto user = new UserDto()
                 {
@@ -55,7 +57,7 @@ public class HomeController : Controller
                     OnlineService = onlineServiceAddOnValue,
                     LargerStorage = largerStorageAddOnValue,
                     CustomizableStorage = customizableStorageAddOnValue,
-                    Total = billTypeValue + onlineServiceAddOnValue + largerStorageAddOnValue + customizableStorageAddOnValue
+                    Total = total
                 };
                 return PartialView("_SuccessMessage");
             }

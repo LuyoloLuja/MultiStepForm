@@ -130,10 +130,12 @@
 
 				if (selectedPlanElement != null) {
 					selectedPlanValue = selectedPlanElement.value;
-				} else if (selectedPlanValue == 0) {
+				}
+				
+				if (selectedPlanValue <= 0) {
 					isValid = false;
 					planError.classList.remove("hidden");
-				} else if (selectedPlanValue > 0) {
+				} else {
 					planError.classList.add("hidden");
 				}
 			}
@@ -363,10 +365,13 @@
 				$(".finishing-up").addClass("hidden");
 
 				$(".success").removeClass("hidden").html(response);
-				$(".success").addClass("animate__animated animate__backInDown");
+				// $(".success").addClass("animate__animated animate__backInDown");
 			},
 			error: function (xhr, status, error) {
 				console.log("AJAX error:", error);
+				if(xhr.status == 0) {
+					console.log("Network issue or app stopped running.");
+				}
 				alert("Error: " + xhr.status + " - " + xhr.statusText);
 			}
 		})
