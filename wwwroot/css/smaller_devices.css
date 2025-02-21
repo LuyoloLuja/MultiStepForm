@@ -44,7 +44,7 @@
     border-radius: 1rem;
     position: absolute;
     top: 15vh;
-    transform: translate(18px); /* get the correct numbers to align centre */
+    transform: translate(18px);
   }
   .billing-type {
     margin-bottom: .8rem;
