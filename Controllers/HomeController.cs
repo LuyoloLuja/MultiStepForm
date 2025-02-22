@@ -22,7 +22,7 @@ public class HomeController : Controller
         {
             var existingUser = USERS.FirstOrDefault(m => m.Email == model.PersonalInfo.Email);
 
-            if(existingUser == null) // user doesn't exist
+            if(existingUser == null)
             {
                 model.PersonalInfo.Id = Guid.NewGuid();
 
