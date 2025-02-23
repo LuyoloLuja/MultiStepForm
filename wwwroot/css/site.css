@@ -40,7 +40,7 @@ p { font-size: 16px; }
   padding: 0.8rem;
   border-radius: 0.8rem;
 }
-.content { display: flex; }
+.content { display: flex; background-color: #fff; }
 aside {
   height: 90vh; /* todo - change height to fit-content  */
   border-radius: 0.8rem;
@@ -322,10 +322,10 @@ hr {
   font-weight: 700;
 }
 .success {
-  display: flex;
+  /* display: flex;
   align-items: center;
-  justify-content: center;
-  /* border: 1px solid blue; */
+  justify-content: center; 
+  border: 1px solid blue; */
 }
 .success-content {
   color: hsl(213, 96%, 18%);

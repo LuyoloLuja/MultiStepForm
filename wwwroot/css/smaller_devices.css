@@ -44,7 +44,8 @@
     border-radius: 1rem;
     position: absolute;
     top: 15vh;
-    transform: translate(18px);
+    left: 50%;
+    transform: translateX(-50%);
   }
   .billing-type {
     margin-bottom: .8rem;

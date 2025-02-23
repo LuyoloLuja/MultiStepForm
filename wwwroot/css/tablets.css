@@ -13,7 +13,7 @@
     aside {
         height: 30vh; 
         width: 100%;
-        padding: 4rem;
+        padding: 6rem;
         display: flex;
         justify-content: space-around;
         border-radius: 0;
@@ -35,6 +35,18 @@
     }
     .step-info { display: none; }
     .main-info {
-      
+      padding: 0;
+      background-color: hsl(229, 24%, 87%);
+    }
+    .main-info section {
+      background-color: hsl(0, 0%, 100%);
+      width: 80%;
+      margin: auto;
+      padding: 4rem;
+      border-radius: 1rem;
+      position: absolute;
+      top: 20vh;
+      left: 50%;
+      transform: translateX(-50%);
     }
 }
