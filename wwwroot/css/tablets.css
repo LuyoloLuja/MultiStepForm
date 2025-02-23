@@ -36,7 +36,6 @@
     .step-info { display: none; }
     .main-info {
       padding: 0;
-      background-color: hsl(229, 24%, 87%);
     }
     .main-info section {
       background-color: hsl(0, 0%, 100%);
